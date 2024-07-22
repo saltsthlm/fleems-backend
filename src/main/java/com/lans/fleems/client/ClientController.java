@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -26,8 +27,20 @@ public class ClientController {
     }
 
     @GetMapping("/{clientId}")
-    public ResponseEntity<ClientResponseDto> getClientById(@PathVariable String clientId) {
+    public ResponseEntity<ClientResponseDto> getClientById(@PathVariable UUID clientId) {
         Client client = clientService.getClientById(clientId);
+        return ResponseEntity.ok(ClientResponseDto.fromClient(client));
+    }
+
+    @DeleteMapping("/{clientId}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable UUID clientId) {
+        clientService.deleteClientById(clientId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<ClientResponseDto> updateClient(@RequestBody ClientDto clientDto) {
+        Client client = clientService.updateClient(new Client(clientDto));
         return ResponseEntity.ok(ClientResponseDto.fromClient(client));
     }
 

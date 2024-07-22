@@ -1,6 +1,9 @@
 package com.lans.fleems.client;
 
-public record ClientResponseDto() {
+import java.util.UUID;
+
+public record ClientResponseDto(UUID id, String name) {
     public static ClientResponseDto fromClient(Client client) {
+        return new ClientResponseDto(client.getId(), client.getName());
     }
 }

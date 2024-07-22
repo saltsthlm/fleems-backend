@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
+
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -15,8 +18,8 @@ import lombok.Setter;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @UuidGenerator
+    private UUID id;
 
     @Column(length = 64, nullable = false)
     private String name;
@@ -25,5 +28,11 @@ public class Client {
     private String description;
 
     public Client(CreateClientDto clientDto) {
+        this.name = clientDto.name();
+    }
+
+    public Client(ClientDto clientDto) {
+        this.id = clientDto.id();
+        this.name = clientDto.name();
     }
 }
