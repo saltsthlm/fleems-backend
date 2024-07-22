@@ -23,7 +23,7 @@ public class ClientController {
 
     @GetMapping
     public ResponseEntity<List<ClientResponseDto>> getAllClients() {
-        List<Client> games = service.getAllGames();
+        List<Client> games = service.getAllClients();
         return ResponseEntity.ok(games.stream().map(GameDTO::fromGame).toList());
     }
 
