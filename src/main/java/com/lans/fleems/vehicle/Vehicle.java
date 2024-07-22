@@ -1,4 +1,4 @@
-package com.lans.fleems.driver;
+package com.lans.fleems.vehicle;
 
 import com.lans.fleems.task.CreateTaskDto;
 import com.lans.fleems.task.TaskDto;
@@ -7,26 +7,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
-public class Driver {
-
+public class Vehicle {
     @Id
     @UuidGenerator
     private UUID id;
 
-    public Driver(CreateDriverDto createDriverDto) {
+    public Vehicle(CreateVehicleDto createVehicleDto) {
     }
 
-    public Driver(DriverDto driverDto) {
-        this.id = driverDto.id();
+    public Vehicle(VehicleDto vehicleDto) {
+        this.id = vehicleDto.id();
     }
 }
