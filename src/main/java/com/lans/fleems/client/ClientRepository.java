@@ -1,10 +1,10 @@
 package com.lans.fleems.client;
 
+import com.lans.fleems.error.NoSuchClientException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Repository
@@ -19,7 +19,7 @@ public class ClientRepository {
 
     public Client getClientById(UUID clientId) {
         return iClientRepository.findById(clientId)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(NoSuchClientException::new);
     }
 
     public Client createClass(Client client) {
@@ -30,13 +30,13 @@ public class ClientRepository {
         if (iClientRepository.existsById(clientId)) {
             iClientRepository.deleteById(clientId);
         }
-        throw new NoSuchElementException();
+        throw new NoSuchClientException();
     }
 
     public Client updateClient(Client client) {
         if (iClientRepository.existsById(client.getId())) {
             return iClientRepository.save(client);
         }
-        throw new NoSuchElementException();
+        throw new NoSuchClientException();
     }
 }

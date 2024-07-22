@@ -20,4 +20,5 @@ public class Driver {
     @Id
     @UuidGenerator
     private UUID id;
+    
 }
