@@ -24,4 +24,6 @@ public class Client {
     @Column(length = 512)
     private String description;
 
+    public Client(CreateClientDto clientDto) {
+    }
 }

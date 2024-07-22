@@ -4,54 +4,37 @@ package com.lans.fleems.client;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("${api.base-path}${api.controllers.games}")
+@RequestMapping("${api.base-path}${api.controllers.clients}")
 @AllArgsConstructor
 public class ClientController {
 
     private final ClientService clientService;
-    @Value("${api.base-path}${api.controllers.games}/")
+    @Value("${api.base-path}${api.controllers.clients}/")
     public String API_CONTEXT_ROOT;
 
     @GetMapping
     public ResponseEntity<List<ClientResponseDto>> getAllClients() {
-        List<Client> games = service.getAllClients();
-        return ResponseEntity.ok(games.stream().map(GameDTO::fromGame).toList());
+        List<Client> clients = clientService.getAllClients();
+        return ResponseEntity.ok(clients.stream().map(ClientResponseDto::fromClient).toList());
     }
 
-    @GetMapping("/{gameId}")
-    public ResponseEntity<GameDTO> getGameById(@PathVariable String gameId) {
-        Game game = service.getGameById(gameId);
-        return ResponseEntity.ok(GameDTO.fromGame(game));
+    @GetMapping("/{clientId}")
+    public ResponseEntity<ClientResponseDto> getClientById(@PathVariable String clientId) {
+        Client client = clientService.getClientById(clientId);
+        return ResponseEntity.ok(ClientResponseDto.fromClient(client));
     }
 
     @PostMapping
-    public ResponseEntity<GameDTO> createGame(@RequestBody AddGameDTO gameDto) {
-        Team homeTeam = service.getOrCreateTeam(gameDto.homeTeam());
-        Team awayTeam = service.getOrCreateTeam(gameDto.awayTeam());
-
-        Game game = new Game(
-                gameDto.date(),
-                homeTeam,
-                awayTeam,
-                gameDto.homeScore(),
-                gameDto.awayScore(),
-                gameDto.attendance(),
-                gameDto.referee()
-        );
-
-        Game createdGame = service.createGame(game);
-
-        GameDTO dto = GameDTO.fromGame(createdGame);
-        return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdGame.getId())).body(dto);
+    public ResponseEntity<ClientResponseDto> createClient(@RequestBody CreateClientDto clientDto) {
+        Client createdClient = new Client(clientDto);
+        ClientResponseDto clientResponseDto = ClientResponseDto.fromClient(createdClient);
+        return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdClient.getId())).body(clientResponseDto);
     }
-}
 }
