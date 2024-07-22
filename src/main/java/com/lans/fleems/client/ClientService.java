@@ -8,4 +8,7 @@ public class ClientService {
 
     public Client getClientById(String clientId) {
     }
+
+    public Client createClient(Client client) {
+    }
 }

@@ -33,7 +33,7 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<ClientResponseDto> createClient(@RequestBody CreateClientDto clientDto) {
-        Client createdClient = new Client(clientDto);
+        Client createdClient = clientService.createClient(new Client(clientDto));
         ClientResponseDto clientResponseDto = ClientResponseDto.fromClient(createdClient);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdClient.getId())).body(clientResponseDto);
     }
