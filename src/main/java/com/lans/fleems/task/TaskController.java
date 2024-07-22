@@ -18,7 +18,7 @@ public class TaskController {
 
     private final TaskService taskService;
     @Value("${api.base-path}${api.controllers.tasks}/")
-    public String API_CONTEXT_ROOT;
+    public static String API_CONTEXT_ROOT;
 
     @GetMapping
     public ResponseEntity<List<TaskResponseDto>> getAllTasks() {

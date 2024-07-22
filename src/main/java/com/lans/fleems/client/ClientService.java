@@ -1,14 +1,16 @@
 package com.lans.fleems.client;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class ClientService {
 
-    ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public List<Client> getAllClients() {
         return clientRepository.getAllClients();

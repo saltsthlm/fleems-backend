@@ -22,7 +22,7 @@ public class DriverController {
     private final DriverService driverService;
 
     @Value("${api.base-path}${api.controllers.drivers}/")
-    public String API_CONTEXT_ROOT;
+    public static String API_CONTEXT_ROOT;
 
     @GetMapping
     public ResponseEntity<List<DriverResponseDto>> getAllDrivers() {

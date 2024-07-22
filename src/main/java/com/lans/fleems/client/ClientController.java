@@ -18,7 +18,7 @@ public class ClientController {
 
     private final ClientService clientService;
     @Value("${api.base-path}${api.controllers.clients}/")
-    public String API_CONTEXT_ROOT;
+    public static String API_CONTEXT_ROOT;
 
     @GetMapping
     public ResponseEntity<List<ClientResponseDto>> getAllClients() {
