@@ -1,0 +1,20 @@
+api:
+  base-path: /api
+  controllers:
+    clients: /clients
+    drivers: /drivers
+    tasks: /tasks
+    vehicles: /vehicles
+spring:
+  config:
+    import: secrets.yml
+  application:
+    name: fleems
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: sqlserver
+      mode: always
