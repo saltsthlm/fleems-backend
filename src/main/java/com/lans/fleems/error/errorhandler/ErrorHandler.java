@@ -1,4 +1,4 @@
-package com.lans.fleems.error;
+package com.lans.fleems.error.errorhandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

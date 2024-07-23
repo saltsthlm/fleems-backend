@@ -1,7 +1,7 @@
 package com.lans.fleems.client.repository;
 
 import com.lans.fleems.client.model.Client;
-import com.lans.fleems.error.NoSuchClientException;
+import com.lans.fleems.error.exception.NoSuchClientException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

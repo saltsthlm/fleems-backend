@@ -1,7 +1,7 @@
 package com.lans.fleems.driver.repository;
 
 import com.lans.fleems.driver.model.Driver;
-import com.lans.fleems.error.NoSuchDriverException;
+import com.lans.fleems.error.exception.NoSuchDriverException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

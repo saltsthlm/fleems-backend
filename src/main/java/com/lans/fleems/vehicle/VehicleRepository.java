@@ -1,7 +1,7 @@
 package com.lans.fleems.vehicle;
 
 
-import com.lans.fleems.error.NoSuchVehicleException;
+import com.lans.fleems.error.exception.NoSuchVehicleException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
 package com.lans.fleems.task.repository;
 
 
-import com.lans.fleems.error.NoSuchClientException;
-import com.lans.fleems.error.NoSuchTaskException;
+import com.lans.fleems.error.exception.NoSuchClientException;
+import com.lans.fleems.error.exception.NoSuchTaskException;
 import com.lans.fleems.task.model.Task;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;

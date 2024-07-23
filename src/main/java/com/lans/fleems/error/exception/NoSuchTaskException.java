@@ -1,4 +1,4 @@
-package com.lans.fleems.error;
+package com.lans.fleems.error.exception;
 
 import java.util.NoSuchElementException;
 
