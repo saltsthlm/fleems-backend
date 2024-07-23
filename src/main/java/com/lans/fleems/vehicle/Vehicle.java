@@ -48,5 +48,11 @@ public class Vehicle {
 
     public Vehicle(VehicleDto vehicleDto) {
         this.id = vehicleDto.id();
+        this.licenseNumber = vehicleDto.licenseNumber();
+        this.payload = vehicleDto.payload();
+        this.height = vehicleDto.height();
+        this.weight = vehicleDto.weight();
+        this.length = vehicleDto.length();
+        this.model = vehicleDto.model();
     }
 }
