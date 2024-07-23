@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,20 +23,28 @@ public class Leg {
     @Id
     @UuidGenerator
     private UUID id;
+
     @ManyToOne
     @JoinColumn(name ="driver_id")
     private Driver driver;
+
     @ManyToOne
     @JoinColumn(name ="vehicle_id")
     private Vehicle vehicle;
-    @Column(name = "start_time", nullable = false)
+
+    @CreatedDate
+    @Column(nullable = false)
     private LocalDateTime startTime;
-    @Column(name = "end_time", nullable = false)
+
+    @Column
     private LocalDateTime endTime;
-    @Column(name = "start_location", nullable = false)
+
+    @Column(nullable = false)
     private String startLocation;
-    @Column(name = "end_location", nullable = false)
+
+    @Column
     private String endLocation;
+
     @ManyToOne
     @JoinColumn(name ="task_id")
     private Task task;
@@ -43,9 +53,7 @@ public class Leg {
         driver = createLegDto.driver();
         vehicle = createLegDto.vehicle();
         startTime = createLegDto.startTime();
-        endTime = createLegDto.endTime();
         startLocation = createLegDto.startLocation();
-        endLocation = createLegDto.endLocation();
         task = createLegDto.task();
     }
 

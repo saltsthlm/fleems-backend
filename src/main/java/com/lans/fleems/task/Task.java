@@ -25,21 +25,29 @@ public class Task {
     @UuidGenerator
     private UUID id;
 
+    @Column(nullable = false)
     private String startDestination;
 
+    @Column(nullable = false)
     private String endDestination;
 
     @CreatedDate
+    @Column(nullable = false)
     private Date dateCreated;
 
+    @Column
     private Date dateFinished;
 
+    @Column
     private String expectedDistance;
 
+    @Column
     private String product;
 
+    @Column
     private int payload;
 
+    @Column
     private int quantity;
 
     @ManyToOne

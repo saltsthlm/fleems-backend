@@ -2,6 +2,7 @@ package com.lans.fleems.driver;
 
 import com.lans.fleems.task.CreateTaskDto;
 import com.lans.fleems.task.TaskDto;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -26,13 +27,13 @@ public class Driver {
     @UuidGenerator
     private UUID id;
 
-    @NotNull
+    @Column(length = 64, nullable = false)
     private String name;
 
-    @NotNull
+    @Column(length = 32, nullable = false)
     private String licenseNumber;
 
-    @NotNull
+    @Column(length = 64, nullable = false)
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String phoneNumber;
 

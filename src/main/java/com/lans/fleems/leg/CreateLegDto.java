@@ -7,12 +7,10 @@ import com.lans.fleems.vehicle.Vehicle;
 import java.time.LocalDateTime;
 
 public record CreateLegDto(
-         Driver driver,
-         Vehicle vehicle,
-         LocalDateTime startTime,
-         LocalDateTime endTime,
-         String startLocation,
-         String endLocation,
-         Task task
+        Driver driver,
+        Vehicle vehicle,
+        LocalDateTime startTime,
+        String startLocation,
+        Task task
 ) {
 }
