@@ -1,6 +1,10 @@
-package com.lans.fleems.vehicle;
+package com.lans.fleems.vehicle.controller;
 
-import com.lans.fleems.driver.*;
+import com.lans.fleems.vehicle.service.VehicleService;
+import com.lans.fleems.vehicle.model.CreateVehicleDto;
+import com.lans.fleems.vehicle.model.Vehicle;
+import com.lans.fleems.vehicle.model.VehicleDto;
+import com.lans.fleems.vehicle.model.VehicleResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

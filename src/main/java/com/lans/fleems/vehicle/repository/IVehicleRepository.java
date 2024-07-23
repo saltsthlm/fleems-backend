@@ -1,5 +1,6 @@
-package com.lans.fleems.vehicle;
+package com.lans.fleems.vehicle.repository;
 
+import com.lans.fleems.vehicle.model.Vehicle;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;

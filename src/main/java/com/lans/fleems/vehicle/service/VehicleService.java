@@ -1,5 +1,7 @@
-package com.lans.fleems.vehicle;
+package com.lans.fleems.vehicle.service;
 
+import com.lans.fleems.vehicle.model.Vehicle;
+import com.lans.fleems.vehicle.repository.VehicleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

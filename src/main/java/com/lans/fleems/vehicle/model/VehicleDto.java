@@ -1,4 +1,4 @@
-package com.lans.fleems.vehicle;
+package com.lans.fleems.vehicle.model;
 
 import java.util.UUID;
 
