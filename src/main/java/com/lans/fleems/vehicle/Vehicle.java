@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +29,16 @@ public class Vehicle {
     @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$\n", message="{invalid.licenseNumber}")
     private String licenseNumber;
     @Column(nullable = false)
+    @Min(value = 0, message="{invalid.payload}")
     private double payload;
     @Column(nullable = false)
+    @Min(value = 0, message="{invalid.height}")
     private double height;
     @Column(nullable = false)
+    @Min(value = 0, message="{invalid.weight}")
     private double weight;
     @Column(nullable = false)
+    @Min(value = 0, message="{invalid.length}")
     private double length;
     @Column(nullable = false)
     private String model;
