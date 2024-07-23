@@ -25,8 +25,8 @@ public class Vehicle {
     @Id
     @UuidGenerator
     private UUID id;
-    @Column(nullable = false)
-    @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$\n", message="{invalid.licenseNumber}")
+    @Column
+    @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$", message="{invalid.licenseNumber}")
     private String licenseNumber;
     @Column(nullable = false)
     @Min(value = 0, message="{invalid.payload}")

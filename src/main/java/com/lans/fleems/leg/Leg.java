@@ -4,6 +4,7 @@ import com.lans.fleems.driver.Driver;
 import com.lans.fleems.task.Task;
 import com.lans.fleems.vehicle.Vehicle;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,6 +51,7 @@ public class Leg {
     private Task task;
 
     @Column
+    @Min(value = 0, message="{invalid.distanceDriven}")
     private double distanceDriven;
 
     public Leg(CreateLegDto createLegDto) {

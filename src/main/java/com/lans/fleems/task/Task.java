@@ -4,6 +4,7 @@ package com.lans.fleems.task;
 import com.lans.fleems.client.Client;
 import com.lans.fleems.leg.Leg;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.springframework.data.annotation.CreatedDate;
@@ -37,15 +38,18 @@ public class Task {
     private Date dateFinished;
 
     @Column
+    @Min(value = 0, message="{invalid.expectedDistance}")
     private double expectedDistance;
 
     @Column
     private String product;
 
     @Column
+    @Min(value = 0, message="{invalid.payload}")
     private double payload;
 
     @Column
+    @Min(value = 0, message="{invalid.quantity}")
     private int quantity;
 
     @ManyToOne
