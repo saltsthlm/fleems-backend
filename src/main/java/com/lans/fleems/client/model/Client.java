@@ -1,4 +1,4 @@
-package com.lans.fleems.client;
+package com.lans.fleems.client.model;
 
 
 import com.lans.fleems.task.model.Task;

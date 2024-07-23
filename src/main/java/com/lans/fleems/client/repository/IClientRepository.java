@@ -1,5 +1,6 @@
-package com.lans.fleems.client;
+package com.lans.fleems.client.repository;
 
+import com.lans.fleems.client.model.Client;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;

@@ -1,6 +1,11 @@
-package com.lans.fleems.client;
+package com.lans.fleems.client.controller;
 
 
+import com.lans.fleems.client.model.Client;
+import com.lans.fleems.client.model.ClientDto;
+import com.lans.fleems.client.model.ClientResponseDto;
+import com.lans.fleems.client.model.CreateClientDto;
+import com.lans.fleems.client.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

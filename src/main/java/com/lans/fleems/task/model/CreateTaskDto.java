@@ -1,6 +1,6 @@
 package com.lans.fleems.task.model;
 
-import com.lans.fleems.client.Client;
+import com.lans.fleems.client.model.Client;
 
 public record CreateTaskDto(Client client,
                             String startDestination,

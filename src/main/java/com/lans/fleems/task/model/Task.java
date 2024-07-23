@@ -1,7 +1,7 @@
 package com.lans.fleems.task.model;
 
 
-import com.lans.fleems.client.Client;
+import com.lans.fleems.client.model.Client;
 import com.lans.fleems.leg.Leg;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

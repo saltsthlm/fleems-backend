@@ -1,5 +1,7 @@
-package com.lans.fleems.client;
+package com.lans.fleems.client.service;
 
+import com.lans.fleems.client.model.Client;
+import com.lans.fleems.client.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
