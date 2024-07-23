@@ -45,7 +45,7 @@ public class Task {
     private String product;
 
     @Column
-    private int payload;
+    private double payload;
 
     @Column
     private int quantity;
