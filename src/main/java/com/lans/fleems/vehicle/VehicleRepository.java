@@ -32,16 +32,16 @@ public class VehicleRepository {
     }
 
     public void deleteById(UUID vehicleId) {
-        if (iVehicleRepository.existsById(vehicleId)) {
-            iVehicleRepository.deleteById(vehicleId);
+        if (!iVehicleRepository.existsById(vehicleId)) {
+            throw new NoSuchVehicleException();
         }
-        throw new NoSuchVehicleException();
+        iVehicleRepository.deleteById(vehicleId);
     }
 
     public Vehicle updateVehicle(Vehicle vehicle) {
-        if (iVehicleRepository.existsById(vehicle.getId())) {
-            return iVehicleRepository.save(vehicle);
+        if (!iVehicleRepository.existsById(vehicle.getId())) {
+            throw new NoSuchVehicleException();
         }
-        throw new NoSuchVehicleException();
+        return iVehicleRepository.save(vehicle);
     }
 }

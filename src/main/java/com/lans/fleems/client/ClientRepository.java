@@ -27,16 +27,16 @@ public class ClientRepository {
     }
 
     public void deleteById(UUID clientId) {
-        if (iClientRepository.existsById(clientId)) {
-            iClientRepository.deleteById(clientId);
+        if (!iClientRepository.existsById(clientId)) {
+            throw new NoSuchClientException();
         }
-        throw new NoSuchClientException();
+        iClientRepository.deleteById(clientId);
     }
 
     public Client updateClient(Client client) {
-        if (iClientRepository.existsById(client.getId())) {
-            return iClientRepository.save(client);
+        if (!iClientRepository.existsById(client.getId())) {
+            throw new NoSuchClientException();
         }
-        throw new NoSuchClientException();
+        return iClientRepository.save(client);
     }
 }

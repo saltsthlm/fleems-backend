@@ -28,16 +28,16 @@ public class DriverRepository {
     }
 
     public void deleteById(UUID driverId) {
-        if (iDriverRepository.existsById(driverId)) {
-            iDriverRepository.deleteById(driverId);
+        if (!iDriverRepository.existsById(driverId)) {
+            throw new NoSuchDriverException();
         }
-        throw new NoSuchDriverException();
+        iDriverRepository.deleteById(driverId);
     }
 
     public Driver updateDriver(Driver driver) {
-        if (iDriverRepository.existsById(driver.getId())) {
-            return iDriverRepository.save(driver);
+        if (!iDriverRepository.existsById(driver.getId())) {
+            throw new NoSuchDriverException();
         }
-        throw new NoSuchDriverException();
+        return iDriverRepository.save(driver);
     }
 }

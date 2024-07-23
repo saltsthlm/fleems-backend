@@ -29,16 +29,17 @@ public class TaskRepository {
     }
 
     public void deleteById(UUID taskId) {
-        if (iTaskRepository.existsById(taskId)) {
-            iTaskRepository.deleteById(taskId);
+        if (!iTaskRepository.existsById(taskId)) {
+            throw new NoSuchClientException();
         }
-        throw new NoSuchClientException();
+        iTaskRepository.deleteById(taskId);
     }
 
     public Task updateTask(Task task) {
-        if (iTaskRepository.existsById(task.getId())) {
-            return iTaskRepository.save(task);
+        if (!iTaskRepository.existsById(task.getId())) {
+            throw new NoSuchTaskException();
         }
-        throw new NoSuchTaskException();
+        return iTaskRepository.save(task);
+
     }
 }
