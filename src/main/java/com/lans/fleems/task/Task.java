@@ -67,6 +67,7 @@ public class Task {
         this.quantity = createTaskDto.quantity();
     }
 
+
     public Task(TaskDto taskDto) {
         this.id = taskDto.id();
     }
