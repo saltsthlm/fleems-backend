@@ -1,5 +1,6 @@
 package com.lans.fleems.task.service;
 
+import com.lans.fleems.leg.Leg;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.task.repository.TaskRepository;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,11 @@ public class TaskService {
 
     public Task updateTask(Task task) {
         return taskRepository.updateTask(task);
+    }
+
+    public Task addLeg(Leg leg, UUID taskId) {
+       Task task = taskRepository.getTaskById(taskId);
+       task.getLegs().add(leg);
+       return taskRepository.updateTask(task);
     }
 }

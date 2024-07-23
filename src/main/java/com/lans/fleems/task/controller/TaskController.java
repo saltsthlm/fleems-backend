@@ -1,5 +1,7 @@
 package com.lans.fleems.task.controller;
 
+import com.lans.fleems.leg.CreateLegDto;
+import com.lans.fleems.leg.Leg;
 import com.lans.fleems.task.service.TaskService;
 import com.lans.fleems.task.model.CreateTaskDto;
 import com.lans.fleems.task.model.Task;
@@ -45,6 +47,11 @@ public class TaskController {
     @PutMapping
     public ResponseEntity<TaskResponseDto> updateClient(@RequestBody TaskDto taskDto) {
         Task task = taskService.updateTask(new Task(taskDto));
+        return ResponseEntity.ok(TaskResponseDto.fromTask(task));
+    }
+    @PutMapping("/{taskId}/leg")
+    public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto, @PathVariable UUID taskId) {
+        Task task = taskService.addLeg(new Leg(createLegDto), taskId);
         return ResponseEntity.ok(TaskResponseDto.fromTask(task));
     }
 
