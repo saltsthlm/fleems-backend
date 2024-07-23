@@ -1,7 +1,5 @@
 package com.lans.fleems.vehicle;
 
-import com.lans.fleems.task.Task;
-import com.lans.fleems.task.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

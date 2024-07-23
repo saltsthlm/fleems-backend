@@ -1,17 +1,14 @@
-package com.lans.fleems.task;
+package com.lans.fleems.task.model;
 
 
 import com.lans.fleems.client.Client;
 import com.lans.fleems.leg.Leg;
-import com.lans.fleems.leg.LegInfoDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 

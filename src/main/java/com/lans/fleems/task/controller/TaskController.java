@@ -1,6 +1,10 @@
-package com.lans.fleems.task;
+package com.lans.fleems.task.controller;
 
-import com.lans.fleems.client.*;
+import com.lans.fleems.task.service.TaskService;
+import com.lans.fleems.task.model.CreateTaskDto;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.model.TaskDto;
+import com.lans.fleems.task.model.TaskResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

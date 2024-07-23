@@ -1,7 +1,7 @@
 package com.lans.fleems.leg;
 
 import com.lans.fleems.driver.Driver;
-import com.lans.fleems.task.Task;
+import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.Vehicle;
 
 import java.time.LocalDateTime;

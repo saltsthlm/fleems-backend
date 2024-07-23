@@ -1,8 +1,5 @@
 package com.lans.fleems.vehicle;
 
-import com.lans.fleems.driver.Driver;
-import com.lans.fleems.task.CreateTaskDto;
-import com.lans.fleems.task.TaskDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,7 +8,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 

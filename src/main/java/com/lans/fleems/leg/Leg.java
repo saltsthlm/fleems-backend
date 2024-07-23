@@ -1,8 +1,7 @@
 package com.lans.fleems.leg;
 
 import com.lans.fleems.driver.Driver;
-import com.lans.fleems.task.Task;
-import com.lans.fleems.task.TaskInfoDto;
+import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.Vehicle;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -10,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;

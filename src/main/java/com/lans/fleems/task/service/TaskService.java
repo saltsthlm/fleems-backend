@@ -1,7 +1,7 @@
-package com.lans.fleems.task;
+package com.lans.fleems.task.service;
 
-import com.lans.fleems.client.Client;
-import com.lans.fleems.client.ClientRepository;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

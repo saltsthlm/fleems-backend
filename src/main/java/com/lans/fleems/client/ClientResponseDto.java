@@ -1,7 +1,7 @@
 package com.lans.fleems.client;
 
-import com.lans.fleems.task.Task;
-import com.lans.fleems.task.TaskInfoDto;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.model.TaskInfoDto;
 
 import java.util.List;
 import java.util.UUID;

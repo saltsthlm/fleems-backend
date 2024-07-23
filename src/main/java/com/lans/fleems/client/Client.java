@@ -1,7 +1,7 @@
 package com.lans.fleems.client;
 
 
-import com.lans.fleems.task.Task;
+import com.lans.fleems.task.model.Task;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
