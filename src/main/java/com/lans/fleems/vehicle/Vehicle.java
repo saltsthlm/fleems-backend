@@ -20,6 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table
 public class Vehicle {
+
     @Id
     @UuidGenerator
     private UUID id;
@@ -37,6 +38,12 @@ public class Vehicle {
     private String model;
 
     public Vehicle(CreateVehicleDto createVehicleDto) {
+        this.licenseNumber = createVehicleDto.licenseNumber();
+        this.payload = createVehicleDto.payload();
+        this.height = createVehicleDto.height();
+        this.weight = createVehicleDto.weight();
+        this.length = createVehicleDto.length();
+        this.model = createVehicleDto.model();
     }
 
     public Vehicle(VehicleDto vehicleDto) {
