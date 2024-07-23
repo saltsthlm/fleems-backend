@@ -37,7 +37,8 @@ public class TaskService {
 
     public Task addLeg(Leg leg, UUID taskId) {
        Task task = taskRepository.getTaskById(taskId);
-       task.getLegs().add(leg);
+        leg.setTask(task);
+        task.getLegs().add(leg);
        return taskRepository.updateTask(task);
     }
 }
