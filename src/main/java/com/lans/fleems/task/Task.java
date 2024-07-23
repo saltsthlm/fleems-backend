@@ -2,8 +2,6 @@ package com.lans.fleems.task;
 
 
 import com.lans.fleems.client.Client;
-import com.lans.fleems.client.ClientDto;
-import com.lans.fleems.client.CreateClientDto;
 import com.lans.fleems.leg.Leg;
 import jakarta.persistence.*;
 import lombok.*;
@@ -56,6 +54,10 @@ public class Task {
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Leg> legs;
+
+    public double getDistanceDriven() {
+       return legs.stream().map(Leg::getDistanceDriven).mapToDouble(Double::doubleValue).sum();
+    }
 
     public Task(CreateTaskDto createTaskDto) {
         this.client = createTaskDto.client();
