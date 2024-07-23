@@ -26,8 +26,8 @@ public class Client {
     @Column(length = 512)
     private String description;
 
-    @OneToMany(mappedBy = "leg", cascade = CascadeType.ALL)
-    private List<Task> legs;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Task> tasks;
 
     public Client(CreateClientDto clientDto) {
         this.name = clientDto.name();
