@@ -1,4 +1,4 @@
-package com.lans.fleems.driver;
+package com.lans.fleems.driver.model;
 
 
 import java.util.UUID;

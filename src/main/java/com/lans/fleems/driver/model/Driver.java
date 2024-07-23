@@ -1,4 +1,4 @@
-package com.lans.fleems.driver;
+package com.lans.fleems.driver.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

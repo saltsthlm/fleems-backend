@@ -1,5 +1,7 @@
-package com.lans.fleems.driver;
+package com.lans.fleems.driver.service;
 
+import com.lans.fleems.driver.model.Driver;
+import com.lans.fleems.driver.repository.DriverRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

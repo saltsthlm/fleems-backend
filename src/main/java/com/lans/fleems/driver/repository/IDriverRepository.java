@@ -1,6 +1,7 @@
-package com.lans.fleems.driver;
+package com.lans.fleems.driver.repository;
 
 
+import com.lans.fleems.driver.model.Driver;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;
