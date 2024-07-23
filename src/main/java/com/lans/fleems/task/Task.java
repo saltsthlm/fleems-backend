@@ -3,6 +3,7 @@ package com.lans.fleems.task;
 
 import com.lans.fleems.client.Client;
 import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.LegInfoDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
@@ -85,5 +86,19 @@ public class Task {
         this.product = taskDto.product();
         this.payload = taskDto.payload();
         this.quantity = taskDto.quantity();
+    }
+    public TaskInfoDto toInfoDto(){
+        return new TaskInfoDto(
+                 id,
+                 startDestination,
+                 endDestination,
+                 dateCreated,
+                 dateFinished,
+                expectedDistance,
+                product,
+                payload,
+                quantity,
+                legs.stream().map(Leg::toInfoDto).toList()
+        );
     }
 }

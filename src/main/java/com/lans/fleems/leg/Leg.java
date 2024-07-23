@@ -2,6 +2,7 @@ package com.lans.fleems.leg;
 
 import com.lans.fleems.driver.Driver;
 import com.lans.fleems.task.Task;
+import com.lans.fleems.task.TaskInfoDto;
 import com.lans.fleems.vehicle.Vehicle;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -73,5 +74,15 @@ public class Leg {
         task = legDto.task();
         distanceDriven =legDto.distanceDriven();
 
+    }
+    public LegInfoDto toInfoDto() {
+       return new LegInfoDto( id,
+                driver,
+                vehicle,
+                startTime,
+                endTime,
+                startLocation,
+                endLocation,
+               distanceDriven) ;
     }
 }

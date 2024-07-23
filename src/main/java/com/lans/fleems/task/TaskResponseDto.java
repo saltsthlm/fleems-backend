@@ -3,9 +3,9 @@ package com.lans.fleems.task;
 
 import com.lans.fleems.client.Client;
 import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.LegInfoDto;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,8 +18,7 @@ public record TaskResponseDto(UUID id,
                               String product,
                               double payload,
                               int quantity,
-                              Client client,
-                              List<Leg> legs) {
+                              List<LegInfoDto> legs) {
     public static TaskResponseDto fromTask(Task task) {
         return new TaskResponseDto(task.getId(),
                 task.getStartDestination(),
@@ -30,8 +29,7 @@ public record TaskResponseDto(UUID id,
                 task.getProduct(),
                 task.getPayload(),
                 task.getQuantity(),
-                task.getClient(),
-                task.getLegs()
+                task.getLegs().stream().map(Leg::toInfoDto).toList()
         );
     }
 }
