@@ -80,6 +80,8 @@ public class Task {
         this.startDestination = taskDto.startDestination();
         this.endDestination = taskDto.endDestination();
         this.expectedDistance = taskDto.expectedDistance();
+        this.dateCreated = taskDto.dateCreated();
+        this.dateFinished = taskDto.dateFinished();
         this.product = taskDto.product();
         this.payload = taskDto.payload();
         this.quantity = taskDto.quantity();
