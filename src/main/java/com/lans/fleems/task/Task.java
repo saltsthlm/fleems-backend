@@ -70,5 +70,12 @@ public class Task {
 
     public Task(TaskDto taskDto) {
         this.id = taskDto.id();
+        this.client = taskDto.client();
+        this.startDestination = taskDto.startDestination();
+        this.endDestination = taskDto.endDestination();
+        this.expectedDistance = taskDto.expectedDistance();
+        this.product = taskDto.product();
+        this.payload = taskDto.payload();
+        this.quantity = taskDto.quantity();
     }
 }

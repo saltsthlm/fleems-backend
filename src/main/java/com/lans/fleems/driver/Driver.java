@@ -56,5 +56,9 @@ public class Driver {
 
     public Driver(DriverDto driverDto) {
         this.id = driverDto.id();
+        this.name = driverDto.name();
+        this.licenseNumber = driverDto.licenseNumber();
+        this.phoneNumber = driverDto.phoneNumber();
+        this.emailAdress = driverDto.emailAdress();
     }
 }

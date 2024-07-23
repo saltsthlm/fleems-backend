@@ -15,5 +15,6 @@ public record LegDto(
         LocalDateTime endTime,
         String startLocation,
         String endLocation,
-        Task task
+        Task task,
+        double distanceDriven
 ) {}

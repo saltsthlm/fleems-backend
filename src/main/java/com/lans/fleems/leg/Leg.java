@@ -49,6 +49,9 @@ public class Leg {
     @JoinColumn(name ="task_id")
     private Task task;
 
+    @Column
+    private double distanceDriven;
+
     public Leg(CreateLegDto createLegDto) {
         driver = createLegDto.driver();
         vehicle = createLegDto.vehicle();
@@ -66,5 +69,7 @@ public class Leg {
         startLocation = legDto.startLocation();
         endLocation = legDto.endLocation();
         task = legDto.task();
+        distanceDriven =legDto.distanceDriven();
+
     }
 }
