@@ -14,7 +14,7 @@ public record TaskDto(
         String endDestination,
         Date dateCreated,
         Date dateFinished,
-        String expectedDistance,
+        double expectedDistance,
         String product,
         double payload,
         int quantity,

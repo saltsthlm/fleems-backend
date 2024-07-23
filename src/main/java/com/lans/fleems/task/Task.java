@@ -37,7 +37,7 @@ public class Task {
     private Date dateFinished;
 
     @Column
-    private String expectedDistance;
+    private double expectedDistance;
 
     @Column
     private String product;
