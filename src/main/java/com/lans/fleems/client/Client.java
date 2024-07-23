@@ -1,10 +1,12 @@
 package com.lans.fleems.client;
 
 
+import com.lans.fleems.task.Task;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +25,9 @@ public class Client {
 
     @Column(length = 512)
     private String description;
+
+    @OneToMany(mappedBy = "leg", cascade = CascadeType.ALL)
+    private List<Task> legs;
 
     public Client(CreateClientDto clientDto) {
         this.name = clientDto.name();
