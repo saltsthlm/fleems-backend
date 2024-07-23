@@ -9,6 +9,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -30,18 +31,17 @@ public class Task {
     @Column(nullable = false)
     private String endDestination;
 
-    @CreatedDate
     @Column(nullable = false)
-    private Date dateCreated;
+    private LocalDateTime dateCreated = LocalDateTime.now();
 
     @Column
-    private Date dateFinished;
+    private LocalDateTime dateFinished;
 
     @Column
     @Min(value = 0, message="{invalid.expectedDistance}")
     private double expectedDistance;
 
-    @Column
+    @Column(nullable = false)
     private String product;
 
     @Column

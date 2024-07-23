@@ -25,21 +25,27 @@ public class Vehicle {
     @Id
     @UuidGenerator
     private UUID id;
-    @Column
+
+    @Column(unique=true)
     @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$", message="{invalid.licenseNumber}")
     private String licenseNumber;
+
     @Column(nullable = false)
     @Min(value = 0, message="{invalid.payload}")
     private double payload;
+
     @Column(nullable = false)
     @Min(value = 0, message="{invalid.height}")
     private double height;
+
     @Column(nullable = false)
     @Min(value = 0, message="{invalid.weight}")
     private double weight;
+
     @Column(nullable = false)
     @Min(value = 0, message="{invalid.length}")
     private double length;
+
     @Column(nullable = false)
     private String model;
 

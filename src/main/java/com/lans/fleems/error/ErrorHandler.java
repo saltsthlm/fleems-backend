@@ -12,22 +12,22 @@ import java.util.NoSuchElementException;
 public class ErrorHandler {
 
     @ExceptionHandler({NoSuchElementException.class})
-    public ResponseEntity<?> notFoundHandler(Exception ex) {
+    public ResponseEntity<String> notFoundHandler(NoSuchElementException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity<?> illegalArgumentHandler(Exception ex) {
+    public ResponseEntity<String> illegalArgumentHandler(IllegalArgumentException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleValidationException(Exception ex) {
+    public ResponseEntity<String> handleValidationException(MethodArgumentNotValidException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<?> defaultErrorHandler(Exception ex) {
+    public ResponseEntity<String> defaultErrorHandler(Exception ex) {
         return ResponseEntity.internalServerError().body(ex.getMessage());
     }
 }
