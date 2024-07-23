@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -20,11 +21,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table
 public class Vehicle {
-
     @Id
     @UuidGenerator
     private UUID id;
     @Column(nullable = false)
+    @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$\n", message="{invalid.licenseNumber}")
     private String licenseNumber;
     @Column(nullable = false)
     private double payload;
