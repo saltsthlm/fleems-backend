@@ -46,6 +46,12 @@ public class Driver {
     private String emailAdress;
 
     public Driver(CreateDriverDto createDriverDto) {
+
+        name= createDriverDto.name();
+        licenseNumber= createDriverDto.licenseNumber();
+        phoneNumber= createDriverDto.phoneNumber();
+        emailAdress= createDriverDto.emailAdress();
+
     }
 
     public Driver(DriverDto driverDto) {

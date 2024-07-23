@@ -17,10 +17,10 @@ public record VehicleResponseDto(UUID id,
                 vehicle.getId(),
                 vehicle.getLicenseNumber(),
                 vehicle.getPayload(),
-                 vehicle.getHeight(),
+                vehicle.getHeight(),
                 vehicle.getWeight(),
-                 vehicle.getLength(),
-                 vehicle.getModel()
+                vehicle.getLength(),
+                vehicle.getModel()
                 );
     }
 }
