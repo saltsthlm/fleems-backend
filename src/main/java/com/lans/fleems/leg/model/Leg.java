@@ -1,10 +1,9 @@
-package com.lans.fleems.leg;
+package com.lans.fleems.leg.model;
 
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.model.Vehicle;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;

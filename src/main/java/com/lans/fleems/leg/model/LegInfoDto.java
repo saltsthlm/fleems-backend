@@ -1,4 +1,4 @@
-package com.lans.fleems.leg;
+package com.lans.fleems.leg.model;
 
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.vehicle.model.Vehicle;

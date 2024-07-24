@@ -1,7 +1,7 @@
 package com.lans.fleems.task.controller;
 
-import com.lans.fleems.leg.CreateLegDto;
-import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.model.CreateLegDto;
+import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.task.service.TaskService;
 import com.lans.fleems.task.model.CreateTaskDto;
 import com.lans.fleems.task.model.Task;

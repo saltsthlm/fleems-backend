@@ -1,8 +1,8 @@
 package com.lans.fleems.task.model;
 
 
-import com.lans.fleems.leg.Leg;
-import com.lans.fleems.leg.LegInfoDto;
+import com.lans.fleems.leg.model.Leg;
+import com.lans.fleems.leg.model.LegInfoDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.lans.fleems.task.model;
 
 import com.lans.fleems.client.model.Client;
-import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.model.Leg;
 
 import java.time.LocalDateTime;
 import java.util.List;

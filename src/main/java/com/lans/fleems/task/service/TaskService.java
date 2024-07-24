@@ -1,6 +1,6 @@
 package com.lans.fleems.task.service;
 
-import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.task.repository.TaskRepository;
 import lombok.AllArgsConstructor;

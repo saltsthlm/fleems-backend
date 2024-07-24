@@ -2,9 +2,8 @@ package com.lans.fleems.task.model;
 
 
 import com.lans.fleems.client.model.Client;
-import com.lans.fleems.leg.Leg;
+import com.lans.fleems.leg.model.Leg;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;

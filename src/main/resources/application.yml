@@ -6,6 +6,7 @@ api:
     tasks: /tasks
     vehicles: /vehicles
     assignments: /assignments
+    legs: /legs
 spring:
   config:
     import: secrets.yml
