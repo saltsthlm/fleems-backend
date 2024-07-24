@@ -33,4 +33,18 @@ public class DriverService {
     public Driver updateDriver(Driver driver) {
         return driverRepository.updateDriver(driver);
     }
+
+    static public byte[] photoStringToByteArray(String photoString) {
+        if (photoString == null) {
+            return null;
+        }
+        return photoString.getBytes();
+    }
+
+    static public String byteArrayToPhotoString(byte[] photoArray) {
+        if (photoArray == null) {
+            return null;
+        }
+        return new String(photoArray);
+    }
 }

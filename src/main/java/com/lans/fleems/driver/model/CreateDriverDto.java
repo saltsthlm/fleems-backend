@@ -4,6 +4,7 @@ public record CreateDriverDto(
         String name,
         String licenseNumber,
         String phoneNumber,
-        String emailAdress
+        String emailAdress,
+        String photo
 ) {
 }

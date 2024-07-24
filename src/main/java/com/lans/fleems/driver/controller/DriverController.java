@@ -50,7 +50,7 @@ public class DriverController {
     }
 
     @PostMapping
-    public ResponseEntity<DriverResponseDto> createClient(@RequestBody CreateDriverDto createDriverDto) {
+    public ResponseEntity<DriverResponseDto> createDriver(@RequestBody CreateDriverDto createDriverDto) {
         Driver driver = driverService.createDriver(new Driver(createDriverDto));
         DriverResponseDto driverResponseDto = DriverResponseDto.fromDriver(driver);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + driver.getId())).body(driverResponseDto);

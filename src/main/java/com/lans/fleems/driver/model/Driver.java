@@ -1,9 +1,7 @@
 package com.lans.fleems.driver.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.lans.fleems.driver.service.DriverService;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -39,12 +37,16 @@ public class Driver {
     @Email(message = "{invalid.email}")
     private String emailAdress;
 
-    public Driver(CreateDriverDto createDriverDto) {
+    @Lob
+    @Column
+    private byte[] photo;
 
+    public Driver(CreateDriverDto createDriverDto) {
         name= createDriverDto.name();
         licenseNumber= createDriverDto.licenseNumber();
         phoneNumber= createDriverDto.phoneNumber();
         emailAdress= createDriverDto.emailAdress();
+        photo = DriverService.photoStringToByteArray(createDriverDto.photo());
 
     }
 
@@ -54,5 +56,6 @@ public class Driver {
         this.licenseNumber = driverDto.licenseNumber();
         this.phoneNumber = driverDto.phoneNumber();
         this.emailAdress = driverDto.emailAdress();
+        this.photo = DriverService.photoStringToByteArray(driverDto.photo());
     }
 }
