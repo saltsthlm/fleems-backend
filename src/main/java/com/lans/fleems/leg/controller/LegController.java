@@ -3,6 +3,7 @@ package com.lans.fleems.leg.controller;
 import com.azure.core.annotation.Get;
 import com.azure.core.annotation.Put;
 import com.lans.fleems.leg.model.Leg;
+import com.lans.fleems.leg.model.LegDto;
 import com.lans.fleems.leg.model.LegResponseDto;
 import com.lans.fleems.leg.service.LegService;
 import com.lans.fleems.task.model.TaskResponseDto;
@@ -32,8 +33,8 @@ public class LegController {
         return ResponseEntity.ok(legService.getAllLegsForDriver(driverID).stream().map(LegResponseDto::fromLeg).toList());
     }
     @PutMapping("/finnish")
-    public ResponseEntity<LegResponseDto> finnishLeg(@RequestBody Leg leg){
-        return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finnishLeg(leg)));
+    public ResponseEntity<LegResponseDto> finnishLeg(@RequestBody LegDto legDto){
+        return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finnishLeg(new Leg(legDto))));
     }
 
 }
