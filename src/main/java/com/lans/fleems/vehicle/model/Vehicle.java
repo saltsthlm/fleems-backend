@@ -44,6 +44,10 @@ public class Vehicle {
     private double length;
 
     @Column(nullable = false)
+    @PositiveOrZero(message="{invalid.length}")
+    private double distanceDriven;
+
+    @Column(nullable = false)
     private String model;
 
     public Vehicle(CreateVehicleDto createVehicleDto) {

@@ -23,16 +23,16 @@ public class LegController {
     @Value("${api.base-path}${api.controllers.legs}/")
     public static String API_CONTEXT_ROOT;
 
-    @Get("/{vehicleId}/vehicle")
-    ResponseEntity<List<LegResponseDto>> getAllLegsForVehicle(@PathVariable UUID vehicleId){
+    @GetMapping("/{vehicleId}/vehicle")
+    public ResponseEntity<List<LegResponseDto>> getAllLegsForVehicle(@PathVariable UUID vehicleId){
         return ResponseEntity.ok(legService.getAllLegsForVehicle(vehicleId).stream().map(LegResponseDto::fromLeg).toList());
     }
-    @Get("/{driverID}/vehicle")
-    ResponseEntity<List<LegResponseDto>> getAllLegsForDriver(@PathVariable UUID driverID){
+    @GetMapping("/{driverID}/vehicle")
+    public ResponseEntity<List<LegResponseDto>> getAllLegsForDriver(@PathVariable UUID driverID){
         return ResponseEntity.ok(legService.getAllLegsForDriver(driverID).stream().map(LegResponseDto::fromLeg).toList());
     }
-    @Put("/finnish")
-    ResponseEntity<LegResponseDto> finnishLeg(@RequestBody Leg leg){
+    @PutMapping("/finnish")
+    public ResponseEntity<LegResponseDto> finnishLeg(@RequestBody Leg leg){
         return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finnishLeg(leg)));
     }
 

@@ -1,12 +1,9 @@
-package com.lans.fleems.assignmentconnections.controller;
+package com.lans.fleems.assignments.controller;
 
-import com.lans.fleems.assignmentconnections.model.Assignment;
-import com.lans.fleems.assignmentconnections.model.AssignmentResponseDto;
-import com.lans.fleems.assignmentconnections.model.CreateAssignmentDto;
-import com.lans.fleems.assignmentconnections.service.AssignmentService;
-import com.lans.fleems.task.model.CreateTaskDto;
-import com.lans.fleems.task.model.Task;
-import com.lans.fleems.task.model.TaskResponseDto;
+import com.lans.fleems.assignments.model.Assignment;
+import com.lans.fleems.assignments.model.AssignmentResponseDto;
+import com.lans.fleems.assignments.model.CreateAssignmentDto;
+import com.lans.fleems.assignments.service.AssignmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

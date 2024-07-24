@@ -28,7 +28,7 @@ public class Leg {
     @JoinColumn(name ="driver_id")
     private Driver driver;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name ="vehicle_id")
     private Vehicle vehicle;
 
@@ -45,7 +45,7 @@ public class Leg {
     @Column
     private String endLocation;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name ="task_id")
     private Task task;
 

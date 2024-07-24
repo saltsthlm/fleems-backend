@@ -9,5 +9,6 @@ public record VehicleDto (
         double height,
         double weight,
         double length,
+        double distanceDriven,
         String model
 ){ }

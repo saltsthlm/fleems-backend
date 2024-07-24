@@ -8,6 +8,7 @@ public record VehicleResponseDto(UUID id,
                                  double height,
                                  double weight,
                                  double length,
+                                 double distanceDriven,
                                  String model) {
     public static VehicleResponseDto fromVehicle(Vehicle vehicle) {
         return new VehicleResponseDto(
@@ -17,6 +18,7 @@ public record VehicleResponseDto(UUID id,
                 vehicle.getHeight(),
                 vehicle.getWeight(),
                 vehicle.getLength(),
+                vehicle.getDistanceDriven(),
                 vehicle.getModel()
                 );
     }

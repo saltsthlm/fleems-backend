@@ -2,6 +2,7 @@ package com.lans.fleems.leg.service;
 
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.repository.LegRepository;
+import com.lans.fleems.vehicle.model.Vehicle;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class LegService {
     }
 
     public Leg finnishLeg(Leg leg) {
+        Vehicle vehicle = leg.getVehicle();
+        vehicle.setDistanceDriven(vehicle.getDistanceDriven()+leg.getDistanceDriven());
+        leg.setVehicle(vehicle);
         return legRepository.updateLeg(leg);
     }
 }

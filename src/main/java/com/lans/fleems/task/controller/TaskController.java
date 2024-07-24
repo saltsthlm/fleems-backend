@@ -49,9 +49,9 @@ public class TaskController {
         Task task = taskService.updateTask(new Task(taskDto));
         return ResponseEntity.ok(TaskResponseDto.fromTask(task));
     }
-    @PutMapping("/{taskId}/leg")
-    public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto, @PathVariable UUID taskId) {
-        Task task = taskService.addLeg(new Leg(createLegDto), taskId);
+    @PutMapping("/leg")
+    public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto) {
+        Task task = taskService.addLeg(new Leg(createLegDto), createLegDto.task().getId());
         return ResponseEntity.ok(TaskResponseDto.fromTask(task));
     }
 

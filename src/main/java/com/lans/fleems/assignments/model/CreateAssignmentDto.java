@@ -1,4 +1,4 @@
-package com.lans.fleems.assignmentconnections.model;
+package com.lans.fleems.assignments.model;
 
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;

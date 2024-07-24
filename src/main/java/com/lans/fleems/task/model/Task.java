@@ -54,7 +54,7 @@ public class Task {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "task", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Leg> legs;
 
     public double getDistanceDriven() {

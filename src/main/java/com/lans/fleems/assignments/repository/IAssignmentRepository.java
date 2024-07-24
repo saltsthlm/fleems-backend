@@ -1,6 +1,6 @@
-package com.lans.fleems.assignmentconnections.repository;
+package com.lans.fleems.assignments.repository;
 
-import com.lans.fleems.assignmentconnections.model.Assignment;
+import com.lans.fleems.assignments.model.Assignment;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;

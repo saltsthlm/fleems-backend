@@ -1,9 +1,8 @@
-package com.lans.fleems.assignmentconnections.service;
+package com.lans.fleems.assignments.service;
 
-import com.lans.fleems.assignmentconnections.model.Assignment;
-import com.lans.fleems.assignmentconnections.repository.AssignmentRepository;
+import com.lans.fleems.assignments.model.Assignment;
+import com.lans.fleems.assignments.repository.AssignmentRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
