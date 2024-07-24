@@ -5,6 +5,7 @@ api:
     drivers: /drivers
     tasks: /tasks
     vehicles: /vehicles
+    assignments: /assignments
 spring:
   config:
     import: secrets.yml
