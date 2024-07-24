@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,11 +36,7 @@ public class Driver {
     private String phoneNumber;
 
     @Column(unique=true)
-    @Pattern(regexp = "[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
-            + "[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-            + "(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9]"
-            + "(?:[A-Za-z0-9-]*[A-Za-z0-9])?",
-            message = "{invalid.email}")
+    @Email(message = "{invalid.email}")
     private String emailAdress;
 
     public Driver(CreateDriverDto createDriverDto) {

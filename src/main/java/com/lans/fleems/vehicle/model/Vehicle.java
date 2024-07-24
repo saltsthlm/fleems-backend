@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,19 +28,19 @@ public class Vehicle {
     private String licenseNumber;
 
     @Column(nullable = false)
-    @Min(value = 0, message="{invalid.payload}")
+    @PositiveOrZero(message="{invalid.payload}")
     private double payload;
 
     @Column(nullable = false)
-    @Min(value = 0, message="{invalid.height}")
+    @PositiveOrZero(message="{invalid.height}")
     private double height;
 
     @Column(nullable = false)
-    @Min(value = 0, message="{invalid.weight}")
+    @PositiveOrZero(message="{invalid.weight}")
     private double weight;
 
     @Column(nullable = false)
-    @Min(value = 0, message="{invalid.length}")
+    @PositiveOrZero(message="{invalid.length}")
     private double length;
 
     @Column(nullable = false)

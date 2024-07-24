@@ -5,6 +5,7 @@ import com.lans.fleems.client.model.Client;
 import com.lans.fleems.leg.Leg;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -36,18 +37,18 @@ public class Task {
     private LocalDateTime dateFinished;
 
     @Column
-    @Min(value = 0, message="{invalid.expectedDistance}")
+    @PositiveOrZero(message="{invalid.expectedDistance}")
     private double expectedDistance;
 
     @Column(nullable = false)
     private String product;
 
     @Column
-    @Min(value = 0, message="{invalid.payload}")
+    @PositiveOrZero(message="{invalid.payload}")
     private double payload;
 
     @Column
-    @Min(value = 0, message="{invalid.quantity}")
+    @PositiveOrZero(message="{invalid.quantity}")
     private int quantity;
 
     @ManyToOne
