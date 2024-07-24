@@ -1,16 +1,15 @@
 package com.lans.fleems.leg.controller;
 
 import com.azure.core.annotation.Get;
+import com.azure.core.annotation.Put;
+import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.model.LegResponseDto;
 import com.lans.fleems.leg.service.LegService;
 import com.lans.fleems.task.model.TaskResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,6 +30,10 @@ public class LegController {
     @Get("/{driverID}/vehicle")
     ResponseEntity<List<LegResponseDto>> getAllLegsForDriver(@PathVariable UUID driverID){
         return ResponseEntity.ok(legService.getAllLegsForDriver(driverID).stream().map(LegResponseDto::fromLeg).toList());
+    }
+    @Put("/finnish")
+    ResponseEntity<LegResponseDto> finnishLeg(@RequestBody Leg leg){
+        return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finnishLeg(leg)));
     }
 
 }

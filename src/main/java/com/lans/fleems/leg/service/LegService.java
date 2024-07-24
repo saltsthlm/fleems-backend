@@ -20,4 +20,8 @@ public class LegService {
     public List<Leg> getAllLegsForDriver(UUID driverId) {
         return legRepository.getAllLegs().stream().filter(e->e.getDriver().getId().equals(driverId)).toList();
     }
+
+    public Leg finnishLeg(Leg leg) {
+        return legRepository.updateLeg(leg);
+    }
 }
