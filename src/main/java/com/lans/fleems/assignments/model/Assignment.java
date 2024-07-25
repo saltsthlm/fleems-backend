@@ -41,4 +41,9 @@ public class Assignment {
     }
 
 
+    public Assignment(Task task, Driver driver, Vehicle vehicle) {
+        this.task = task;
+        this.driver = driver;
+        this.vehicle = vehicle;
+    }
 }
