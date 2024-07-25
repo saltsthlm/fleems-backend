@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
-                .cors(withDefaults())
+
                 .oauth2Client(withDefaults())
                 .oauth2Login(withDefaults());
 
