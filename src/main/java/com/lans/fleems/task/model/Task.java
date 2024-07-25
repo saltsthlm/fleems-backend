@@ -40,11 +40,11 @@ public class Task {
 
     @Column
     @PositiveOrZero(message="{invalid.expectedDistance}")
-    private double expectedDistance;
+    private Double expectedDistance;
 
     @Column
     @PositiveOrZero(message="{invalid.expectedDistance}")
-    private int expectedTime;
+    private Integer expectedTime;
 
     @Column(nullable = false)
     private String product;
