@@ -3,6 +3,8 @@ package com.lans.fleems.client.model;
 
 import com.lans.fleems.task.model.Task;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -20,6 +22,17 @@ public class Client {
     @UuidGenerator
     private UUID id;
 
+    @Column
+    private String contactPerson;
+
+    @Column(unique=true)
+    @Email(message = "{invalid.email}")
+    private String contactEmail;
+
+    @Column(unique=true)
+    @Pattern(regexp = "^[+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$", message="{invalid.phoneNumber}")
+    private String contactPhoneNumber;
+
     @Column(length = 64, nullable = false)
     private String name;
 
@@ -30,11 +43,17 @@ public class Client {
     private List<Task> tasks;
 
     public Client(CreateClientDto clientDto) {
+        this.contactPerson =clientDto.contactPerson();
+        this.contactEmail =clientDto.contactEmail();
+        this.contactPhoneNumber =clientDto.contactPhoneNumber();
         this.name = clientDto.name();
     }
 
     public Client(ClientDto clientDto) {
         this.id = clientDto.id();
+        this.contactPerson =clientDto.contactPerson();
+        this.contactEmail =clientDto.contactEmail();
+        this.contactPhoneNumber =clientDto.contactPhoneNumber();
         this.name = clientDto.name();
     }
 }
