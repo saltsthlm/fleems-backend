@@ -5,6 +5,8 @@ import com.lans.fleems.driver.model.CreateDriverDto;
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.driver.model.DriverDto;
 import com.lans.fleems.driver.model.DriverResponseDto;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.model.TaskDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +56,14 @@ public class DriverController {
         Driver driver = driverService.createDriver(new Driver(createDriverDto));
         DriverResponseDto driverResponseDto = DriverResponseDto.fromDriver(driver);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + driver.getId())).body(driverResponseDto);
+    }
+    @GetMapping("/compatible")
+    public ResponseEntity<List<DriverResponseDto>> getCompatibleDriver(@RequestBody TaskDto taskDto) {
+        List<DriverResponseDto> drivers = driverService.getAssignableDrivers(new Task(taskDto))
+                .stream()
+                .map(DriverResponseDto::fromDriver)
+                .toList();
+        return ResponseEntity.ok(drivers);
     }
 
 

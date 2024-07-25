@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +32,7 @@ public class Assignment {
 
     @ManyToOne
     private Vehicle vehicle;
+
 
     public Assignment(CreateAssignmentDto createAssignmentDto){
         task = createAssignmentDto.task();

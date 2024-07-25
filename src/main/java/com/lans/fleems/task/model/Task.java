@@ -33,11 +33,18 @@ public class Task {
     private LocalDateTime dateCreated = LocalDateTime.now();
 
     @Column
+    private LocalDateTime startDate ;
+
+    @Column
     private LocalDateTime dateFinished;
 
     @Column
     @PositiveOrZero(message="{invalid.expectedDistance}")
     private double expectedDistance;
+
+    @Column
+    @PositiveOrZero(message="{invalid.expectedDistance}")
+    private int expectedTime;
 
     @Column(nullable = false)
     private String product;
@@ -65,7 +72,9 @@ public class Task {
         this.client = createTaskDto.client();
         this.startDestination = createTaskDto.startDestination();
         this.endDestination = createTaskDto.endDestination();
+        this.startDate =createTaskDto.startDate();
         this.expectedDistance = createTaskDto.expectedDistance();
+        this.expectedTime = createTaskDto.expectedTime();
         this.product = createTaskDto.product();
         this.payload = createTaskDto.payload();
         this.quantity = createTaskDto.quantity();
@@ -78,6 +87,8 @@ public class Task {
         this.startDestination = taskDto.startDestination();
         this.endDestination = taskDto.endDestination();
         this.expectedDistance = taskDto.expectedDistance();
+        this.expectedTime = taskDto.expectedTime();
+        this.startDate =taskDto.startDate();
         this.dateCreated = taskDto.dateCreated();
         this.dateFinished = taskDto.dateFinished();
         this.product = taskDto.product();
@@ -92,6 +103,8 @@ public class Task {
                  dateCreated,
                  dateFinished,
                 expectedDistance,
+                expectedTime,
+                startDate,
                 product,
                 payload,
                 quantity,

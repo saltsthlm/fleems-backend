@@ -13,6 +13,8 @@ public record TaskInfoDto(
         LocalDateTime dateCreated,
         LocalDateTime dateFinished,
         double expectedDistance,
+        int expectedTime,
+        LocalDateTime startDate,
         String product,
         double payload,
         int quantity,
