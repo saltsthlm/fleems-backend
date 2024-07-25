@@ -4,6 +4,7 @@ import com.lans.fleems.assignments.model.Assignment;
 import com.lans.fleems.assignments.model.AssignmentResponseDto;
 import com.lans.fleems.assignments.model.CreateAssignmentDto;
 import com.lans.fleems.assignments.service.AssignmentService;
+import com.lans.fleems.task.model.TaskResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -32,5 +34,12 @@ public class AssignmentController {
         AssignmentResponseDto assignmentResponseDto = AssignmentResponseDto.fromAssignment(createdAssignment);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdAssignment.getId())).body(assignmentResponseDto);
     }
-
+    @GetMapping("/{vehicleId}")
+    public ResponseEntity<List<TaskResponseDto>> getTasksForVehicle(@PathVariable UUID vehicleId) {
+        return ResponseEntity.ok(assignmentService.getTasksForVehicle(vehicleId).stream().map(TaskResponseDto::fromTask).toList());
+    }
+    @GetMapping("/{driverId}")
+    public ResponseEntity<List<TaskResponseDto>> getTasksForDriver(@PathVariable UUID driverId) {
+        return ResponseEntity.ok(assignmentService.getTasksForDriver(driverId).stream().map(TaskResponseDto::fromTask).toList());
+    }
 }
