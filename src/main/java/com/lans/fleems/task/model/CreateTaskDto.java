@@ -9,8 +9,8 @@ public record CreateTaskDto(Client client,
                             String endDestination,
                             LocalDateTime startDate,
                             String product,
-                            double expectedDistance,
-                            int expectedTime,
+                            Double expectedDistance,
+                            Integer expectedTime,
                             int payload,
                             int quantity) {
 }
