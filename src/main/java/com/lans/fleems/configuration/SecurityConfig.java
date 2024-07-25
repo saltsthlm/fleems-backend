@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -19,8 +21,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
-                .oauth2Client(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults());
+                .cors(withDefaults())
+                .oauth2Client(withDefaults())
+                .oauth2Login(withDefaults());
 
         return http.build();
     }
