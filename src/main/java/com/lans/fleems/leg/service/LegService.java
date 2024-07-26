@@ -22,7 +22,7 @@ public class LegService {
         return legRepository.getAllLegs().stream().filter(e->e.getDriver().getId().equals(driverId)).toList();
     }
 
-    public Leg finnishLeg(Leg leg) {
+    public Leg finishLeg(Leg leg) {
         Vehicle vehicle = leg.getVehicle();
         vehicle.setDistanceDriven(vehicle.getDistanceDriven()+leg.getDistanceDriven());
         leg.setVehicle(vehicle);

@@ -10,7 +10,7 @@ public record DriverResponseDto(
         String name,
         String licenseNumber,
         String phoneNumber,
-        String emailAdress,
+        String emailAddress,
         String photo) {
     public static DriverResponseDto fromDriver(Driver driver) {
         return new DriverResponseDto(
@@ -18,7 +18,7 @@ public record DriverResponseDto(
                 driver.getName(),
                 driver.getLicenseNumber(),
                 driver.getPhoneNumber(),
-                driver.getEmailAdress(),
+                driver.getEmailAddress(),
                 DriverService.byteArrayToPhotoString(driver.getPhoto())
         );
     }

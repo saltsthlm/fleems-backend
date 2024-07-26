@@ -35,7 +35,7 @@ public class Driver {
 
     @Column(unique=true)
     @Email(message = "{invalid.email}")
-    private String emailAdress;
+    private String emailAddress;
 
     @Lob
     @Column
@@ -45,7 +45,7 @@ public class Driver {
         name= createDriverDto.name();
         licenseNumber= createDriverDto.licenseNumber();
         phoneNumber= createDriverDto.phoneNumber();
-        emailAdress= createDriverDto.emailAdress();
+        emailAddress= createDriverDto.emailAddress();
         photo = DriverService.photoStringToByteArray(createDriverDto.photo());
 
     }
@@ -55,7 +55,7 @@ public class Driver {
         this.name = driverDto.name();
         this.licenseNumber = driverDto.licenseNumber();
         this.phoneNumber = driverDto.phoneNumber();
-        this.emailAdress = driverDto.emailAdress();
+        this.emailAddress = driverDto.emailAddress();
         this.photo = DriverService.photoStringToByteArray(driverDto.photo());
     }
 }

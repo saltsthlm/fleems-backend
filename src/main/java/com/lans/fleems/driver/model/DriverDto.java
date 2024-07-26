@@ -7,7 +7,7 @@ public record DriverDto(
         String name,
         String licenseNumber,
         String phoneNumber,
-        String emailAdress,
+        String emailAddress,
         String photo) {
 }
 

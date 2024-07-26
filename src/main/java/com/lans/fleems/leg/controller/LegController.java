@@ -32,9 +32,9 @@ public class LegController {
     public ResponseEntity<List<LegResponseDto>> getAllLegsForDriver(@PathVariable UUID driverID){
         return ResponseEntity.ok(legService.getAllLegsForDriver(driverID).stream().map(LegResponseDto::fromLeg).toList());
     }
-    @PutMapping("/finnish")
-    public ResponseEntity<LegResponseDto> finnishLeg(@RequestBody LegDto legDto){
-        return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finnishLeg(new Leg(legDto))));
+    @PutMapping("/finish")
+    public ResponseEntity<LegResponseDto> finishLeg(@RequestBody LegDto legDto){
+        return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finishLeg(new Leg(legDto))));
     }
 
 }
