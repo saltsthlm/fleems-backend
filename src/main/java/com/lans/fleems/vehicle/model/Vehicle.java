@@ -24,7 +24,7 @@ public class Vehicle {
     private UUID id;
 
     @Column(unique=true)
-    @Pattern(regexp = "^[A-Z]{3} \\d{2}[A-Z\\d]$", message="{invalid.licenseNumber}")
+    @Pattern(regexp = "^[A-Z]{3}\\s?\\d{2}[A-Z\\d]$", message="{invalid.licenseNumber}")
     private String licenseNumber;
 
     @Column(nullable = false)
