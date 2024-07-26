@@ -1,7 +1,6 @@
 package com.lans.fleems.driver.service;
 
-import com.lans.fleems.assignments.model.Assignment;
-import com.lans.fleems.assignments.repository.AssignmentRepository;
+import com.lans.fleems.assignment.repository.AssignmentRepository;
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.driver.repository.DriverRepository;
 import com.lans.fleems.task.model.Task;

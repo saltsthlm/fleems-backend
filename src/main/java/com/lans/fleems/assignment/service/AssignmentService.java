@@ -1,7 +1,7 @@
-package com.lans.fleems.assignments.service;
+package com.lans.fleems.assignment.service;
 
-import com.lans.fleems.assignments.model.Assignment;
-import com.lans.fleems.assignments.repository.AssignmentRepository;
+import com.lans.fleems.assignment.model.Assignment;
+import com.lans.fleems.assignment.repository.AssignmentRepository;
 import com.lans.fleems.driver.repository.DriverRepository;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.task.repository.TaskRepository;

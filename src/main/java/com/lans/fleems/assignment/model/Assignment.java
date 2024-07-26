@@ -1,4 +1,4 @@
-package com.lans.fleems.assignments.model;
+package com.lans.fleems.assignment.model;
 
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;
@@ -9,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
