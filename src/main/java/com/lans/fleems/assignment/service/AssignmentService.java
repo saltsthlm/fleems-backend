@@ -9,7 +9,9 @@ import com.lans.fleems.vehicle.repository.VehicleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -47,5 +49,12 @@ public class AssignmentService {
                         driverRepository.getDriverById(driverId),
                         vehicleRepository.getVehicleById(vehicleId)));
 
+    }
+
+    public List<Assignment> getAllActiveAssignments() {
+        return assignmentRepository.getAllAssignments()
+                .stream()
+                .filter(e-> !Objects.equals(e.getTask().getLegs().getLast().getEndLocation(), e.getTask().getEndDestination()))
+                .toList();
     }
 }

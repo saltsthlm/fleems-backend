@@ -28,6 +28,12 @@ public class AssignmentController {
     public ResponseEntity<List<AssignmentResponseDto>> getAllAssignments() {
        return ResponseEntity.ok(assignmentService.getAllAssignments().stream().map(AssignmentResponseDto::fromAssignment).toList());
     }
+
+    @GetMapping("/active")
+    public ResponseEntity<List<AssignmentResponseDto>> getAllActiveAssignments() {
+        return ResponseEntity.ok(assignmentService.getAllActiveAssignments().stream().map(AssignmentResponseDto::fromAssignment).toList());
+    }
+
     @PostMapping
     public ResponseEntity<AssignmentResponseDto> createAssignment(@RequestBody CreateAssignmentDto createAssignmentDto) {
         Assignment createdAssignment = assignmentService.createAssignment(
