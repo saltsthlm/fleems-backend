@@ -24,9 +24,7 @@ public class AssignmentService {
         return assignmentRepository.getAllAssignments();
     }
 
-    public Assignment createAssignment(Assignment assignment) {
-        return assignmentRepository.createAssignment(assignment);
-    }
+
     public List<Task> getTasksForDriver(UUID driverId) {
         return assignmentRepository.getAllAssignments()
                 .stream()

@@ -33,14 +33,6 @@ public class Assignment {
     @ManyToOne
     private Vehicle vehicle;
 
-
-    public Assignment(CreateAssignmentDto createAssignmentDto){
-        task = createAssignmentDto.task();
-        driver = createAssignmentDto.driver();
-        vehicle = createAssignmentDto.vehicle();
-    }
-
-
     public Assignment(Task task, Driver driver, Vehicle vehicle) {
         this.task = task;
         this.driver = driver;

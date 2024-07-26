@@ -28,18 +28,16 @@ public class AssignmentController {
     public ResponseEntity<List<AssignmentResponseDto>> getAllAssignments() {
        return ResponseEntity.ok(assignmentService.getAllAssignments().stream().map(AssignmentResponseDto::fromAssignment).toList());
     }
-    @PostMapping("/{driverId}/{vehicleId}/{taskId}")
-    public ResponseEntity<AssignmentResponseDto> createAssignment(@PathVariable UUID driverId,@PathVariable UUID vehicleId,@PathVariable UUID taskId) {
-        Assignment createdAssignment = assignmentService.createAssignment(driverId, vehicleId, taskId);
-        AssignmentResponseDto assignmentResponseDto = AssignmentResponseDto.fromAssignment(createdAssignment);
-        return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdAssignment.getId())).body(assignmentResponseDto);
-    }
     @PostMapping
     public ResponseEntity<AssignmentResponseDto> createAssignment(@RequestBody CreateAssignmentDto createAssignmentDto) {
-        Assignment createdAssignment = assignmentService.createAssignment(new Assignment(createAssignmentDto));
+        Assignment createdAssignment = assignmentService.createAssignment(
+                createAssignmentDto.driverId(),
+                createAssignmentDto.vehicleId(),
+                createAssignmentDto.taskId());
         AssignmentResponseDto assignmentResponseDto = AssignmentResponseDto.fromAssignment(createdAssignment);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + createdAssignment.getId())).body(assignmentResponseDto);
     }
+
     @GetMapping("/{vehicleId}")
     public ResponseEntity<List<TaskResponseDto>> getTasksForVehicle(@PathVariable UUID vehicleId) {
         return ResponseEntity.ok(assignmentService.getTasksForVehicle(vehicleId).stream().map(TaskResponseDto::fromTask).toList());
