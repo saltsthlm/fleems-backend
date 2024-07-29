@@ -24,6 +24,11 @@ public class LegController {
     @Value("${api.base-path}${api.controllers.legs}/")
     public static String API_CONTEXT_ROOT;
 
+    @GetMapping
+    public ResponseEntity<List<LegResponseDto>> getAllLegs(){
+        return ResponseEntity.ok(legService.getAllLegs().stream().map(LegResponseDto::fromLeg).toList());
+    }
+
     @GetMapping("/{vehicleId}/vehicle")
     public ResponseEntity<List<LegResponseDto>> getAllLegsForVehicle(@PathVariable UUID vehicleId){
         return ResponseEntity.ok(legService.getAllLegsForVehicle(vehicleId).stream().map(LegResponseDto::fromLeg).toList());

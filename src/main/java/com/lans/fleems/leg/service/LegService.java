@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,5 +28,9 @@ public class LegService {
         vehicle.setDistanceDriven(vehicle.getDistanceDriven()+leg.getDistanceDriven());
         leg.setVehicle(vehicle);
         return legRepository.updateLeg(leg);
+    }
+
+    public List<Leg> getAllLegs() {
+        return legRepository.getAllLegs();
     }
 }
