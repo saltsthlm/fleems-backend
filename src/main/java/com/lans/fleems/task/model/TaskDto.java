@@ -21,5 +21,6 @@ public record TaskDto(
         double payload,
         int quantity,
         Client client,
-        List<Leg> legs) {
+        List<Leg> legs,
+        StateEnum state) {
 }

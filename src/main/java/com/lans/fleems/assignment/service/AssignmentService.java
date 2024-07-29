@@ -3,6 +3,7 @@ package com.lans.fleems.assignment.service;
 import com.lans.fleems.assignment.model.Assignment;
 import com.lans.fleems.assignment.repository.AssignmentRepository;
 import com.lans.fleems.driver.repository.DriverRepository;
+import com.lans.fleems.task.model.StateEnum;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.task.repository.TaskRepository;
 import com.lans.fleems.vehicle.repository.VehicleRepository;
@@ -43,9 +44,11 @@ public class AssignmentService {
     }
 
     public Assignment createAssignment(UUID driverId, UUID vehicleId, UUID taskId) {
+        Task task =  taskRepository.getTaskById(taskId);
+        task.setState(StateEnum.ONGOING);
         return assignmentRepository.createAssignment(
                 new Assignment(
-                        taskRepository.getTaskById(taskId),
+                        taskRepository.updateTask(task),
                         driverRepository.getDriverById(driverId),
                         vehicleRepository.getVehicleById(vehicleId)));
 

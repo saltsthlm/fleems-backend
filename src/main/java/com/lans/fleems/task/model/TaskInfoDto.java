@@ -18,6 +18,7 @@ public record TaskInfoDto(
         String product,
         double payload,
         int quantity,
-        List<LegInfoDto> legs
+        List<LegInfoDto> legs,
+        StateEnum state
 ) {
 }

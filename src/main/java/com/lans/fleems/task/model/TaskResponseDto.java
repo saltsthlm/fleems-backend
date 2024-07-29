@@ -23,7 +23,8 @@ public record TaskResponseDto(UUID id,
                               double payload,
                               int quantity,
                               List<LegInfoDto> legs,
-                              ClientResponseDto client) {
+                              ClientResponseDto client,
+                              StateEnum state) {
     public static TaskResponseDto fromTask(Task task) {
         return new TaskResponseDto(task.getId(),
                 task.getStartDestination(),
@@ -37,7 +38,8 @@ public record TaskResponseDto(UUID id,
                 task.getPayload(),
                 task.getQuantity(),
                 task.getLegs().stream().map(Leg::toInfoDto).toList(),
-                ClientResponseDto.fromClient(task.getClient())
+                ClientResponseDto.fromClient(task.getClient()),
+                task.getState()
         );
     }
 }

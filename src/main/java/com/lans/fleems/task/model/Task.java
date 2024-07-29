@@ -65,6 +65,10 @@ public class Task {
     @OneToMany(mappedBy = "task", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Leg> legs = new ArrayList<Leg>();
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private StateEnum state = StateEnum.UNASSIGNED;
+
     public double getDistanceDriven() {
        return legs.stream().map(Leg::getDistanceDriven).mapToDouble(Double::doubleValue).sum();
     }
@@ -95,6 +99,7 @@ public class Task {
         this.product = taskDto.product();
         this.payload = taskDto.payload();
         this.quantity = taskDto.quantity();
+        this.state =taskDto.state();
     }
     public TaskInfoDto toInfoDto(){
         return new TaskInfoDto(
@@ -109,7 +114,8 @@ public class Task {
                 product,
                 payload,
                 quantity,
-                legs.stream().map(Leg::toInfoDto).toList()
+                legs.stream().map(Leg::toInfoDto).toList(),
+                state
         );
     }
 }
