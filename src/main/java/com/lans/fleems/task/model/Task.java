@@ -9,6 +9,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,7 +63,7 @@ public class Task {
     private Client client;
 
     @OneToMany(mappedBy = "task", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-    private List<Leg> legs;
+    private List<Leg> legs = new ArrayList<Leg>();
 
     public double getDistanceDriven() {
        return legs.stream().map(Leg::getDistanceDriven).mapToDouble(Double::doubleValue).sum();
