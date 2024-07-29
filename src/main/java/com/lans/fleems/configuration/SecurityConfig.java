@@ -5,7 +5,7 @@ package com.lans.fleems.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 //@EnableWebSecurity
 public class SecurityConfig {
 /*

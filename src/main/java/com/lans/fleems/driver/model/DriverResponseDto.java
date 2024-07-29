@@ -1,6 +1,5 @@
 package com.lans.fleems.driver.model;
 
-
 import com.lans.fleems.driver.service.DriverService;
 
 import java.util.UUID;

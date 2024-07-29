@@ -1,6 +1,9 @@
 package com.lans.fleems.task.model;
 
 
+import com.lans.fleems.client.model.Client;
+import com.lans.fleems.client.model.ClientDto;
+import com.lans.fleems.client.model.ClientResponseDto;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.model.LegInfoDto;
 
@@ -19,7 +22,8 @@ public record TaskResponseDto(UUID id,
                               String product,
                               double payload,
                               int quantity,
-                              List<LegInfoDto> legs) {
+                              List<LegInfoDto> legs,
+                              ClientResponseDto client) {
     public static TaskResponseDto fromTask(Task task) {
         return new TaskResponseDto(task.getId(),
                 task.getStartDestination(),
@@ -32,7 +36,8 @@ public record TaskResponseDto(UUID id,
                 task.getProduct(),
                 task.getPayload(),
                 task.getQuantity(),
-                task.getLegs().stream().map(Leg::toInfoDto).toList()
+                task.getLegs().stream().map(Leg::toInfoDto).toList(),
+                ClientResponseDto.fromClient(task.getClient())
         );
     }
 }

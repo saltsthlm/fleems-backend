@@ -26,7 +26,7 @@ public class Driver {
     private String name;
 
     @Column(unique=true)
-    @Pattern(regexp = "^[0-9]{6}-[0-9]{4}$", message="{invalid.licenseNumber}")
+    //@Pattern(regexp = "^[0-9]{6}-[0-9]{4}$")
     private String licenseNumber;
 
     @Column(unique=true)
