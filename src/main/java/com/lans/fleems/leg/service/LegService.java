@@ -15,7 +15,6 @@ import java.util.*;
 @Service
 public class LegService {
     private final LegRepository legRepository;
-    private final TaskRepository taskRepository;
 
     public List<Leg> getAllLegsForVehicle(UUID vehicleId) {
         return legRepository.getAllLegs().stream().filter(e->e.getVehicle().getId().equals(vehicleId)).toList();
@@ -27,8 +26,8 @@ public class LegService {
     public Leg finishLeg(Leg leg) {
         Task task = leg.getTask();
         if(Objects.equals(task.getEndDestination(), leg.getEndLocation())){
-            task.setState(StateEnum.FINISHED);
-            taskRepository.updateTask(task);
+             task.setState(StateEnum.FINISHED);
+            leg.setTask(task);
         }
         Vehicle vehicle = leg.getVehicle();
         vehicle.setDistanceDriven(vehicle.getDistanceDriven()+leg.getDistanceDriven());

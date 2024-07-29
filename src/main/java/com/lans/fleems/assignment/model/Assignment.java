@@ -22,7 +22,7 @@ public class Assignment {
     @UuidGenerator
     private UUID id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Task task;
 
     @ManyToOne

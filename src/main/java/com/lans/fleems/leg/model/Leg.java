@@ -45,7 +45,7 @@ public class Leg {
     @Column
     private String endLocation;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name ="task_id")
     private Task task;
 
