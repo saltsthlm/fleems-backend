@@ -1,6 +1,8 @@
 package com.lans.fleems.task.model;
 
 
+import com.lans.fleems.address.Address;
+import com.lans.fleems.address.CoordinateService;
 import com.lans.fleems.client.model.Client;
 import com.lans.fleems.leg.model.Leg;
 import jakarta.persistence.*;
@@ -65,6 +67,14 @@ public class Task {
     @OneToMany(mappedBy = "task", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Leg> legs = new ArrayList<Leg>();
 
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
+    @JoinColumn(name = "startAddress_id")
+    private Address startAddress;
+
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
+    @JoinColumn(name = "endAddress_id")
+    private Address endAddress;
+
     @Column
     @Enumerated(EnumType.STRING)
     private StateEnum state = StateEnum.UNASSIGNED;
@@ -83,6 +93,8 @@ public class Task {
         this.product = createTaskDto.product();
         this.payload = createTaskDto.payload();
         this.quantity = createTaskDto.quantity();
+        this.startAddress = CoordinateService.coordinateStringToJsonString(startDestination);
+        this.endAddress = CoordinateService.coordinateStringToJsonString(endDestination);
     }
 
 
@@ -100,6 +112,8 @@ public class Task {
         this.payload = taskDto.payload();
         this.quantity = taskDto.quantity();
         this.state =taskDto.state();
+        this.startAddress = CoordinateService.coordinateStringToJsonString(startDestination);
+        this.endAddress = CoordinateService.coordinateStringToJsonString(endDestination);
     }
     public TaskInfoDto toInfoDto(){
         return new TaskInfoDto(
