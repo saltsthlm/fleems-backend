@@ -1,5 +1,7 @@
 package com.lans.fleems.leg.model;
 
+import com.lans.fleems.address.Address;
+import com.lans.fleems.address.CoordinateService;
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.model.Vehicle;
@@ -25,11 +27,11 @@ public class Leg {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name ="driver_id")
+    @JoinColumn(name = "driver_id")
     private Driver driver;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name ="vehicle_id")
+    @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
     @CreatedDate
@@ -46,12 +48,20 @@ public class Leg {
     private String endLocation;
 
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
-    @JoinColumn(name ="task_id")
+    @JoinColumn(name = "task_id")
     private Task task;
 
     @Column
-    @PositiveOrZero(message="{invalid.distanceDriven}")
+    @PositiveOrZero(message = "{invalid.distanceDriven}")
     private double distanceDriven;
+
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
+    @JoinColumn(name = "startAddress_id")
+    private Address startAddress;
+
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
+    @JoinColumn(name = "endAddress_id")
+    private Address endAddress;
 
     public Leg(CreateLegDto createLegDto) {
         driver = createLegDto.driver();
@@ -59,6 +69,7 @@ public class Leg {
         startTime = createLegDto.startTime();
         startLocation = createLegDto.startLocation();
         task = createLegDto.task();
+        this.startAddress = CoordinateService.coordinateStringToJsonString(startLocation);
     }
 
     public Leg(LegDto legDto) {
@@ -70,17 +81,21 @@ public class Leg {
         startLocation = legDto.startLocation();
         endLocation = legDto.endLocation();
         task = legDto.task();
-        distanceDriven =legDto.distanceDriven();
-
+        distanceDriven = legDto.distanceDriven();
+        this.startAddress = legDto.startAddress();
+        this.endAddress = CoordinateService.coordinateStringToJsonString(endLocation);
     }
+
     public LegInfoDto toInfoDto() {
-       return new LegInfoDto( id,
+        return new LegInfoDto(id,
                 driver,
                 vehicle,
                 startTime,
                 endTime,
                 startLocation,
                 endLocation,
-               distanceDriven) ;
+                distanceDriven,
+                startAddress,
+                endAddress);
     }
 }

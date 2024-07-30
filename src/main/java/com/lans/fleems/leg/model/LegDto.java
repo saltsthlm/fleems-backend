@@ -1,5 +1,6 @@
 package com.lans.fleems.leg.model;
 
+import com.lans.fleems.address.Address;
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.model.Vehicle;
@@ -16,5 +17,8 @@ public record LegDto(
         String startLocation,
         String endLocation,
         Task task,
-        double distanceDriven
-) {}
+        double distanceDriven,
+        Address startAddress,
+        Address endAddress
+) {
+}

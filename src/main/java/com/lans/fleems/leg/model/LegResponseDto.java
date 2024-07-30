@@ -1,8 +1,8 @@
 package com.lans.fleems.leg.model;
 
+import com.lans.fleems.address.Address;
 import com.lans.fleems.driver.model.Driver;
 import com.lans.fleems.task.model.Task;
-import com.lans.fleems.task.model.TaskResponseDto;
 import com.lans.fleems.vehicle.model.Vehicle;
 
 import java.time.LocalDateTime;
@@ -17,7 +17,9 @@ public record LegResponseDto(
         String startLocation,
         String endLocation,
         Task task,
-        double distanceDriven
+        double distanceDriven,
+        Address startAddress,
+        Address endAddress
 ) {
     public static LegResponseDto fromLeg(Leg leg) {
         return new LegResponseDto(
@@ -29,7 +31,9 @@ public record LegResponseDto(
                 leg.getStartLocation(),
                 leg.getEndLocation(),
                 leg.getTask(),
-                leg.getDistanceDriven()
+                leg.getDistanceDriven(),
+                leg.getStartAddress(),
+                leg.getEndAddress()
         );
     }
 }
