@@ -2,11 +2,8 @@ package com.lans.fleems.task.controller;
 
 import com.lans.fleems.leg.model.CreateLegDto;
 import com.lans.fleems.leg.model.Leg;
+import com.lans.fleems.task.model.*;
 import com.lans.fleems.task.service.TaskService;
-import com.lans.fleems.task.model.CreateTaskDto;
-import com.lans.fleems.task.model.Task;
-import com.lans.fleems.task.model.TaskDto;
-import com.lans.fleems.task.model.TaskResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +48,8 @@ public class TaskController {
     }
     @PutMapping("/leg")
     public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto) {
+        createLegDto.task().setState(StateEnum.ONGOING);
+        taskService.updateTask(createLegDto.task());
         Task task = taskService.addLeg(new Leg(createLegDto), createLegDto.task().getId());
         return ResponseEntity.ok(TaskResponseDto.fromTask(task));
     }
