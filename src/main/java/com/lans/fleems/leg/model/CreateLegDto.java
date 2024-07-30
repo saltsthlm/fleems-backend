@@ -5,12 +5,13 @@ import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.model.Vehicle;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record CreateLegDto(
         Driver driver,
         Vehicle vehicle,
         LocalDateTime startTime,
         String startLocation,
-        Task task
+        UUID taskId
 ) {
 }

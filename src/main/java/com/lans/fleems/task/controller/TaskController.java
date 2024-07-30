@@ -48,10 +48,12 @@ public class TaskController {
     }
     @PutMapping("/leg")
     public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto) {
-        createLegDto.task().setState(StateEnum.ONGOING);
-        taskService.updateTask(createLegDto.task());
-        Task task = taskService.addLeg(new Leg(createLegDto), createLegDto.task().getId());
-        return ResponseEntity.ok(TaskResponseDto.fromTask(task));
+        Task task = taskService.getTaskById(createLegDto.taskId());
+        task.setState(StateEnum.ONGOING);
+        taskService.updateTask(task);
+
+        return ResponseEntity.ok(TaskResponseDto
+                .fromTask(taskService.addLeg(new Leg(createLegDto,task), task.getId())));
     }
 
     @PostMapping

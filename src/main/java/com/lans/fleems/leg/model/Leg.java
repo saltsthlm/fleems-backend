@@ -63,12 +63,12 @@ public class Leg {
     @JoinColumn(name = "endAddress_id")
     private Address endAddress;
 
-    public Leg(CreateLegDto createLegDto) {
+    public Leg(CreateLegDto createLegDto, Task task) {
         driver = createLegDto.driver();
         vehicle = createLegDto.vehicle();
         startTime = createLegDto.startTime();
         startLocation = createLegDto.startLocation();
-        task = createLegDto.task();
+        this.task = task;
         this.startAddress = CoordinateService.coordinateStringToJsonString(startLocation);
     }
 
