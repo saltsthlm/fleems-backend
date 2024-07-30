@@ -63,9 +63,9 @@ public class Leg {
     @JoinColumn(name = "endAddress_id")
     private Address endAddress;
 
-    public Leg(CreateLegDto createLegDto, Task task) {
-        driver = createLegDto.driver();
-        vehicle = createLegDto.vehicle();
+    public Leg(CreateLegDto createLegDto, Task task, Driver driver, Vehicle vehicle) {
+        this.driver = driver;
+        this.vehicle = vehicle;
         startTime = createLegDto.startTime();
         startLocation = createLegDto.startLocation();
         this.task = task;

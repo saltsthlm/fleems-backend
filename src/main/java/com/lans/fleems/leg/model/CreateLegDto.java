@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record CreateLegDto(
-        Driver driver,
-        Vehicle vehicle,
+        UUID driverId,
+        UUID vehicleId,
         LocalDateTime startTime,
         String startLocation,
         UUID taskId

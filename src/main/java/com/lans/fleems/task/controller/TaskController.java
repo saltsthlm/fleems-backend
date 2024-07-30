@@ -1,9 +1,13 @@
 package com.lans.fleems.task.controller;
 
+import com.lans.fleems.driver.model.Driver;
+import com.lans.fleems.driver.service.DriverService;
 import com.lans.fleems.leg.model.CreateLegDto;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.task.model.*;
 import com.lans.fleems.task.service.TaskService;
+import com.lans.fleems.vehicle.model.Vehicle;
+import com.lans.fleems.vehicle.service.VehicleService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +24,9 @@ import java.util.UUID;
 public class TaskController {
 
     private final TaskService taskService;
+    private final DriverService driverService;
+    private final VehicleService vehicleService;
+
     @Value("${api.base-path}${api.controllers.tasks}/")
     public static String API_CONTEXT_ROOT;
 
@@ -49,11 +56,14 @@ public class TaskController {
     @PutMapping("/leg")
     public ResponseEntity<TaskResponseDto> addLeg(@RequestBody CreateLegDto createLegDto) {
         Task task = taskService.getTaskById(createLegDto.taskId());
+        Vehicle vehicle = vehicleService.getVehicleById(createLegDto.vehicleId());
+        Driver driver = driverService.getDriverById(createLegDto.driverId());
+
         task.setState(StateEnum.ONGOING);
         taskService.updateTask(task);
 
         return ResponseEntity.ok(TaskResponseDto
-                .fromTask(taskService.addLeg(new Leg(createLegDto,task), task.getId())));
+                .fromTask(taskService.addLeg(new Leg(createLegDto,task,driver,vehicle), task.getId())));
     }
 
     @PostMapping
