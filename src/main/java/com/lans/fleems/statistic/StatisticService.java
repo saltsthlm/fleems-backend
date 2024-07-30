@@ -42,10 +42,10 @@ public class StatisticService {
                 (leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS)));
     }
 
-    public Double getPercentOfVehiclesAssigned() {
+    public Integer getPercentOfVehiclesAssigned() {
         double assignedVehicles = assignmentService.getAllActiveAssignments().size();
         double vehicles = vehicleRepository.getAllVehicles().size();
-        return assignedVehicles/vehicles;
+        return (int)((assignedVehicles/vehicles)*100);
     }
 
     public Double[] getCompletedThisYear() {

@@ -31,8 +31,9 @@ public class StatisticController {
                 .stream()
                 .map(LegResponseDto::fromLeg).toList());
     }
+
     @GetMapping("/assigned")
-    public ResponseEntity<Double> getPercentOfVehiclesAssigned() {
+    public ResponseEntity<Integer> getPercentOfVehiclesAssigned() {
         return ResponseEntity.ok(statisticService.getPercentOfVehiclesAssigned());
     }
 
