@@ -1,6 +1,7 @@
 api:
   base-path: /api
   controllers:
+    stats: /stats
     clients: /clients
     drivers: /drivers
     tasks: /tasks
