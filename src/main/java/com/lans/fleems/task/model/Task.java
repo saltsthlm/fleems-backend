@@ -16,10 +16,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
+@Getter
+@Setter
 public class Task {
 
     @Id
@@ -36,7 +37,7 @@ public class Task {
     private LocalDateTime dateCreated = LocalDateTime.now();
 
     @Column
-    private LocalDateTime startDate ;
+    private LocalDateTime startDate;
 
     @Column
     private LocalDateTime dateFinished;

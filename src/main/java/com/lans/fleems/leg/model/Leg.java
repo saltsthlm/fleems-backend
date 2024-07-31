@@ -3,6 +3,7 @@ package com.lans.fleems.leg.model;
 import com.lans.fleems.address.Address;
 import com.lans.fleems.address.CoordinateService;
 import com.lans.fleems.driver.model.Driver;
+import com.lans.fleems.driver.model.DriverInfoDto;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.vehicle.model.Vehicle;
 import jakarta.persistence.*;
@@ -47,7 +48,7 @@ public class Leg {
     @Column
     private String endLocation;
 
-    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "task_id")
     private Task task;
 
@@ -70,25 +71,20 @@ public class Leg {
         startLocation = createLegDto.startLocation();
         this.task = task;
         this.startAddress = CoordinateService.coordinateStringToJsonString(startLocation);
+        this.distanceDriven = 0;
     }
 
     public Leg(LegDto legDto) {
         id = legDto.id();
-        driver = legDto.driver();
-        vehicle = legDto.vehicle();
-        startTime = legDto.startTime();
         endTime = legDto.endTime();
-        startLocation = legDto.startLocation();
         endLocation = legDto.endLocation();
-        task = legDto.task();
         distanceDriven = legDto.distanceDriven();
-        this.startAddress = legDto.startAddress();
         this.endAddress = CoordinateService.coordinateStringToJsonString(endLocation);
     }
 
     public LegInfoDto toInfoDto() {
         return new LegInfoDto(id,
-                driver,
+                DriverInfoDto.fromDriver(driver),
                 vehicle,
                 startTime,
                 endTime,

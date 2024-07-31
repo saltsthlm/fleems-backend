@@ -28,6 +28,7 @@ public class ErrorHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<String> defaultErrorHandler(Exception ex) {
+        ex.printStackTrace();
         return ResponseEntity.internalServerError().body(ex.getMessage());
     }
 }

@@ -10,13 +10,13 @@ import java.util.UUID;
 
 public record LegResponseDto(
         UUID id,
-        Driver driver,
-        Vehicle vehicle,
+        UUID driverId,
+        UUID vehicleId,
         LocalDateTime startTime,
         LocalDateTime endTime,
         String startLocation,
         String endLocation,
-        Task task,
+        UUID taskId,
         double distanceDriven,
         Address startAddress,
         Address endAddress
@@ -24,13 +24,13 @@ public record LegResponseDto(
     public static LegResponseDto fromLeg(Leg leg) {
         return new LegResponseDto(
                 leg.getId(),
-                leg.getDriver(),
-                leg.getVehicle(),
+                leg.getDriver().getId(),
+                leg.getVehicle().getId(),
                 leg.getStartTime(),
                 leg.getEndTime(),
                 leg.getStartLocation(),
                 leg.getEndLocation(),
-                leg.getTask(),
+                leg.getTask().getId(),
                 leg.getDistanceDriven(),
                 leg.getStartAddress(),
                 leg.getEndAddress()

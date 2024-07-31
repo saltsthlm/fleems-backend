@@ -44,5 +44,4 @@ public class LegController {
     public ResponseEntity<LegResponseDto> finishLeg(@RequestBody LegDto legDto){
         return ResponseEntity.ok(LegResponseDto.fromLeg(legService.finishLeg(new Leg(legDto))));
     }
-
 }

@@ -10,15 +10,8 @@ import java.util.UUID;
 
 public record LegDto(
         UUID id,
-        Driver driver,
-        Vehicle vehicle,
-        LocalDateTime startTime,
         LocalDateTime endTime,
-        String startLocation,
         String endLocation,
-        Task task,
-        double distanceDriven,
-        Address startAddress,
-        Address endAddress
+        double distanceDriven
 ) {
 }

@@ -12,10 +12,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
+@Getter
+@Setter
 public class Client {
 
     @Id

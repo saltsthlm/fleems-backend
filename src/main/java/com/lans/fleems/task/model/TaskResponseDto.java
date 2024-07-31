@@ -1,6 +1,7 @@
 package com.lans.fleems.task.model;
 
 import com.lans.fleems.address.Address;
+import com.lans.fleems.client.model.ClientInfoDto;
 import com.lans.fleems.client.model.ClientResponseDto;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.model.LegInfoDto;
@@ -23,7 +24,7 @@ public record TaskResponseDto(UUID id,
                               List<LegInfoDto> legs,
                               Address startAddress,
                               Address endAddress,
-                              ClientResponseDto client,
+                              ClientInfoDto client,
                               StateEnum state) {
     public static TaskResponseDto fromTask(Task task) {
         return new TaskResponseDto(task.getId(),
@@ -40,7 +41,7 @@ public record TaskResponseDto(UUID id,
                 task.getLegs().stream().map(Leg::toInfoDto).toList(),
                 task.getStartAddress(),
                 task.getEndAddress(),
-                ClientResponseDto.fromClient(task.getClient()),
+                ClientInfoDto.fromClient(task.getClient()),
                 task.getState()
         );
     }
