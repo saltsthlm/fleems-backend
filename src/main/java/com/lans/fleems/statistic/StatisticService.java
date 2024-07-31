@@ -6,6 +6,8 @@ import com.lans.fleems.assignment.service.AssignmentService;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.repository.LegRepository;
 import com.lans.fleems.task.model.StateEnum;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.service.TaskService;
 import com.lans.fleems.vehicle.repository.VehicleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ public class StatisticService {
     private final VehicleRepository vehicleRepository;
     private final AssignmentRepository assignmentRepository;
     private final AssignmentService assignmentService;
+    private final TaskService taskService;
 
     public List<Leg> getSpeedViolations() {
        return legRepository.getAllLegs().stream().filter(this::isSpeedViolation).toList();
@@ -51,14 +54,14 @@ public class StatisticService {
     public int[] getCompletedThisYear() {
         int[] monthlyAssignments = new int[12];
 
-        List<Assignment> Assignments = assignmentService.getAllAssignments()
+        List<Task> tasks = taskService.getAllTasks()
                 .stream()
-                .filter(e->e.getTask().getState().equals(StateEnum.FINISHED))
-                .filter(e->e.getTask().getDateFinished().isAfter(LocalDateTime.now().minusYears(1)))
+                .filter(e->e.getState().equals(StateEnum.FINISHED))
+                .filter(e->e.getDateFinished().isAfter(LocalDateTime.now().minusYears(1)))
                 .toList();
-        Assignments
+        tasks
                 .forEach(e->
-                        monthlyAssignments[(int) e.getTask().getDateFinished().until(LocalDateTime.now(),ChronoUnit.YEARS)] ++
+                        monthlyAssignments[(int) e.getDateFinished().until(LocalDateTime.now(),ChronoUnit.YEARS)] ++
                         );
         return monthlyAssignments;
     }
