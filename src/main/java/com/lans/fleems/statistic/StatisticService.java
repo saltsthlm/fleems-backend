@@ -48,8 +48,9 @@ public class StatisticService {
         return (int)((assignedVehicles/vehicles)*100);
     }
 
-    public Double[] getCompletedThisYear() {
-        Double[] monthlyAssignments = new Double[12];
+    public int[] getCompletedThisYear() {
+        int[] monthlyAssignments = new int[12];
+
         List<Assignment> Assignments = assignmentService.getAllAssignments()
                 .stream()
                 .filter(e->e.getTask().getState().equals(StateEnum.FINISHED))

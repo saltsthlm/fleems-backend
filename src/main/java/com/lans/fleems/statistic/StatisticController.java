@@ -38,7 +38,7 @@ public class StatisticController {
     }
 
     @GetMapping("/completed")
-    public ResponseEntity<Double[]> getCompletedThisYear() {
+    public ResponseEntity<int[]> getCompletedThisYear() {
         return ResponseEntity.ok(statisticService.getCompletedThisYear());
     }
 }
