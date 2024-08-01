@@ -40,7 +40,10 @@ public class StatisticController {
     public ResponseEntity<int[]> unassignedAssignedDrivers() {
         return ResponseEntity.ok(statisticService.getUnassignedAssignedDrivers());
     }
-
+    @GetMapping("/tasks")
+    public ResponseEntity<int[]> taskStatus() {
+        return ResponseEntity.ok(statisticService.taskStatus());
+    }
 
     @GetMapping("/completed")
     public ResponseEntity<int[]> getCompletedThisYear() {

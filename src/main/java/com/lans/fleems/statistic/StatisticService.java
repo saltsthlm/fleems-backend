@@ -57,14 +57,24 @@ public class StatisticService {
     }
     public int[] getUnassignedAssignedDrivers() {
         int assignedDrivers = assignmentService.getAllActiveAssignments().size();
-        System.out.println("assignedVehicles = " + assignedDrivers);
         int drivers = driverRepository.getAllDrivers().size();
-        System.out.println("vehicles = " + drivers);
         int[] assignedUnassigned = new int[2];
         assignedUnassigned[0]=assignedDrivers;
         assignedUnassigned[1]=drivers-assignedDrivers;
-        System.out.println("assignedUnassigned[1] = " + assignedUnassigned[1]);
         return assignedUnassigned;
+    }
+    public int[] taskStatus() {
+        List<StateEnum> states = taskService.getAllTasks().stream().map(Task::getState).toList();
+        int[] status = new int[4];
+        for(StateEnum state: states){
+            switch (state) {
+                case ASSIGNED -> status[0]++;
+                case UNASSIGNED -> status[1]++;
+                case ONGOING -> status[2]++;
+                case FINISHED -> status[3]++;
+            }
+        }
+        return status;
     }
     public int[] getCompletedThisYear() {
         int[] monthlyAssignments = new int[12];
