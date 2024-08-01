@@ -23,7 +23,6 @@ import java.util.Objects;
 public class StatisticService {
     private final LegRepository legRepository;
     private final VehicleRepository vehicleRepository;
-    private final AssignmentService assignmentService;
     private final TaskService taskService;
     private final DriverRepository driverRepository;
 
