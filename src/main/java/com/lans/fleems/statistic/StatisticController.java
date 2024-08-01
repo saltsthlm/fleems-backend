@@ -32,7 +32,7 @@ public class StatisticController {
                 .map(LegResponseDto::fromLeg).toList());
     }
 
-    @GetMapping("/vehicles/status")
+    @GetMapping("/vehicles")
     public ResponseEntity<int[]> unassignedAssignedVehicles() {
         return ResponseEntity.ok(statisticService.getUnassignedAssignedVehicles());
     }
