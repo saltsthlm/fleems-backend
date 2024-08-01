@@ -3,6 +3,7 @@ package com.lans.fleems.statistic;
 import com.lans.fleems.assignment.model.Assignment;
 import com.lans.fleems.assignment.repository.AssignmentRepository;
 import com.lans.fleems.assignment.service.AssignmentService;
+import com.lans.fleems.driver.repository.DriverRepository;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.repository.LegRepository;
 import com.lans.fleems.task.model.StateEnum;
@@ -24,6 +25,7 @@ public class StatisticService {
     private final AssignmentRepository assignmentRepository;
     private final AssignmentService assignmentService;
     private final TaskService taskService;
+    private final DriverRepository driverRepository;
 
     public List<Leg> getSpeedViolations() {
        return legRepository.getAllLegs().stream().filter(this::isSpeedViolation).toList();
@@ -53,7 +55,14 @@ public class StatisticService {
         assignedUnassigned[1]=vehicles-assignedVehicles;
         return assignedUnassigned;
     }
-
+    public int[] getUnassignedAssignedDrivers() {
+        int assignedVehicles = assignmentService.getAllActiveAssignments().size();
+        int vehicles = driverRepository.getAllDrivers().size();
+        int[] assignedUnassigned = new int[2];
+        assignedUnassigned[0]=assignedVehicles;
+        assignedUnassigned[1]=vehicles-assignedVehicles;
+        return assignedUnassigned;
+    }
     public int[] getCompletedThisYear() {
         int[] monthlyAssignments = new int[12];
 

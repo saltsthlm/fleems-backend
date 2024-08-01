@@ -36,6 +36,11 @@ public class StatisticController {
     public ResponseEntity<int[]> unassignedAssignedVehicles() {
         return ResponseEntity.ok(statisticService.getUnassignedAssignedVehicles());
     }
+    @GetMapping("/drivers")
+    public ResponseEntity<int[]> unassignedAssignedDrivers() {
+        return ResponseEntity.ok(statisticService.getUnassignedAssignedDrivers());
+    }
+
 
     @GetMapping("/completed")
     public ResponseEntity<int[]> getCompletedThisYear() {
