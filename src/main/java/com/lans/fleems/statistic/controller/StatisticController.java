@@ -29,11 +29,11 @@ public class StatisticController {
         return ResponseEntity.ok(statisticService.getRestViolations());
     }
 
-    @GetMapping("/vehicles")
+    @GetMapping("/vehicle")
     public ResponseEntity<int[]> unassignedAssignedVehicles() {
         return ResponseEntity.ok(statisticService.getUnassignedAssignedVehicles());
     }
-    @GetMapping("/drivers")
+    @GetMapping("/driver")
     public ResponseEntity<int[]> unassignedAssignedDrivers() {
         return ResponseEntity.ok(statisticService.getUnassignedAssignedDrivers());
     }
