@@ -19,6 +19,7 @@ import java.util.UUID;
 @RequestMapping("${api.base-path}${api.controllers.assignments}")
 @AllArgsConstructor
 public class AssignmentController {
+
     private final AssignmentService assignmentService;
 
     @Value("${api.base-path}${api.controllers.assignments}")

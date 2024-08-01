@@ -64,7 +64,10 @@ public class StatisticService {
     }
 
     public int[] getUnassignedAssignedVehicles() {
-        int assignedVehicles = assignmentService.getAllActiveAssignments().size();
+        int assignedVehicles = taskService.getAllTasks()
+                .stream()
+                .filter(e->e.getState().equals(StateEnum.ONGOING))
+                .toList().size();
         int vehicles = vehicleRepository.getAllVehicles().size();
         int[] assignedUnassigned = new int[2];
         assignedUnassigned[0]=assignedVehicles;
@@ -72,7 +75,10 @@ public class StatisticService {
         return assignedUnassigned;
     }
     public int[] getUnassignedAssignedDrivers() {
-        int assignedDrivers = assignmentService.getAllActiveAssignments().size();
+        int assignedDrivers = taskService.getAllTasks()
+                .stream()
+                .filter(e->e.getState().equals(StateEnum.ONGOING))
+                .toList().size();
         int drivers = driverRepository.getAllDrivers().size();
         int[] assignedUnassigned = new int[2];
         assignedUnassigned[0]=assignedDrivers;

@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("${api.base-path}${api.controllers.stats}")
 @AllArgsConstructor
 public class StatisticController {
+
     private final StatisticService statisticService;
 
     @GetMapping("/speed")
