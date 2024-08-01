@@ -56,11 +56,14 @@ public class StatisticService {
         return assignedUnassigned;
     }
     public int[] getUnassignedAssignedDrivers() {
-        int assignedVehicles = assignmentService.getAllActiveAssignments().size();
-        int vehicles = driverRepository.getAllDrivers().size();
+        int assignedDrivers = assignmentService.getAllActiveAssignments().size();
+        System.out.println("assignedVehicles = " + assignedDrivers);
+        int drivers = driverRepository.getAllDrivers().size();
+        System.out.println("vehicles = " + drivers);
         int[] assignedUnassigned = new int[2];
-        assignedUnassigned[0]=assignedVehicles;
-        assignedUnassigned[1]=vehicles-assignedVehicles;
+        assignedUnassigned[0]=assignedDrivers;
+        assignedUnassigned[1]=drivers-assignedDrivers;
+        System.out.println("assignedUnassigned[1] = " + assignedUnassigned[1]);
         return assignedUnassigned;
     }
     public int[] getCompletedThisYear() {
