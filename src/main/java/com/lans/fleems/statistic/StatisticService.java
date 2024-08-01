@@ -25,7 +25,6 @@ import java.util.Objects;
 public class StatisticService {
     private final LegRepository legRepository;
     private final VehicleRepository vehicleRepository;
-    private final AssignmentRepository assignmentRepository;
     private final AssignmentService assignmentService;
     private final TaskService taskService;
     private final DriverRepository driverRepository;
@@ -33,6 +32,7 @@ public class StatisticService {
     public List<SpeedViolation> getSpeedViolations() {
        return legRepository.getAllLegs()
                .stream()
+               .filter(e->e.getEndTime()!=null)
                .map(this::isSpeedViolation)
                .filter(Objects::nonNull)
                .toList();
@@ -40,15 +40,13 @@ public class StatisticService {
     public List<RestViolation> getRestViolations() {
         return legRepository.getAllLegs()
                 .stream()
+                .filter(e->e.getEndTime()!=null)
                 .map(this::isRestViolation)
                 .filter(Objects::nonNull)
                 .toList();
     }
     private RestViolation isRestViolation(Leg leg){
-        if(leg.getEndTime()==null){
-            return null;
-        }
-        double drivingTime = leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS);
+        double drivingTime = leg.getStartTime().until(leg.getEndTime(), ChronoUnit.MINUTES)/60D;
         if(8>drivingTime){
             return null;
         }
@@ -57,9 +55,6 @@ public class StatisticService {
 
     }
     private SpeedViolation isSpeedViolation(Leg leg){
-        if(leg.getEndTime()==null){
-            return null;
-        }
         double speed =leg.getDistanceDriven()/
                 (leg.getStartTime().until(leg.getEndTime(), ChronoUnit.MINUTES)/60D);
         if(90>speed){
