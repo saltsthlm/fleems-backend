@@ -1,7 +1,6 @@
-package com.lans.fleems.statistic;
+package com.lans.fleems.statistic.controller;
 
-import com.lans.fleems.assignment.model.AssignmentResponseDto;
-import com.lans.fleems.leg.model.LegResponseDto;
+import com.lans.fleems.statistic.service.StatisticService;
 import com.lans.fleems.statistic.models.RestViolation;
 import com.lans.fleems.statistic.models.SpeedViolation;
 import lombok.AllArgsConstructor;

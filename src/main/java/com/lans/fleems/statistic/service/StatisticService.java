@@ -1,7 +1,5 @@
-package com.lans.fleems.statistic;
+package com.lans.fleems.statistic.service;
 
-import com.lans.fleems.assignment.model.Assignment;
-import com.lans.fleems.assignment.repository.AssignmentRepository;
 import com.lans.fleems.assignment.service.AssignmentService;
 import com.lans.fleems.driver.repository.DriverRepository;
 import com.lans.fleems.leg.model.Leg;
