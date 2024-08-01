@@ -13,11 +13,7 @@ spring:
     import: secrets.yml
   application:
     name: fleems
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://accounts.google.com
+
   jpa:
     defer-datasource-initialization: true
     hibernate:
