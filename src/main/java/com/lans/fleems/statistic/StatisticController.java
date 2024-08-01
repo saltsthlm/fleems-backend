@@ -32,9 +32,9 @@ public class StatisticController {
                 .map(LegResponseDto::fromLeg).toList());
     }
 
-    @GetMapping("/assigned")
-    public ResponseEntity<Integer> getPercentOfVehiclesAssigned() {
-        return ResponseEntity.ok(statisticService.getPercentOfVehiclesAssigned());
+    @GetMapping("/vehicles/status")
+    public ResponseEntity<int[]> unassignedAssignedVehicles() {
+        return ResponseEntity.ok(statisticService.getUnassignedAssignedVehicles());
     }
 
     @GetMapping("/completed")

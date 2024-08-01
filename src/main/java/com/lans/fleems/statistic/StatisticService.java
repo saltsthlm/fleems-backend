@@ -45,10 +45,13 @@ public class StatisticService {
                 (leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS)));
     }
 
-    public Integer getPercentOfVehiclesAssigned() {
-        double assignedVehicles = assignmentService.getAllActiveAssignments().size();
-        double vehicles = vehicleRepository.getAllVehicles().size();
-        return (int)((assignedVehicles/vehicles)*100);
+    public int[] getUnassignedAssignedVehicles() {
+        int assignedVehicles = assignmentService.getAllActiveAssignments().size();
+        int vehicles = vehicleRepository.getAllVehicles().size();
+        int[] assignedUnassigned = new int[2];
+        assignedUnassigned[0]=assignedVehicles;
+        assignedUnassigned[1]=vehicles-assignedVehicles;
+        return assignedUnassigned;
     }
 
     public int[] getCompletedThisYear() {
