@@ -6,6 +6,8 @@ import com.lans.fleems.assignment.service.AssignmentService;
 import com.lans.fleems.driver.repository.DriverRepository;
 import com.lans.fleems.leg.model.Leg;
 import com.lans.fleems.leg.repository.LegRepository;
+import com.lans.fleems.statistic.models.RestViolation;
+import com.lans.fleems.statistic.models.SpeedViolation;
 import com.lans.fleems.task.model.StateEnum;
 import com.lans.fleems.task.model.Task;
 import com.lans.fleems.task.service.TaskService;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -27,24 +30,44 @@ public class StatisticService {
     private final TaskService taskService;
     private final DriverRepository driverRepository;
 
-    public List<Leg> getSpeedViolations() {
-       return legRepository.getAllLegs().stream().filter(this::isSpeedViolation).toList();
+    public List<SpeedViolation> getSpeedViolations() {
+       return legRepository.getAllLegs()
+               .stream()
+               .map(this::isSpeedViolation)
+               .filter(Objects::nonNull)
+               .toList();
     }
-    public List<Leg> getRestViolations() {
-        return legRepository.getAllLegs().stream().filter(this::isRestViolation).toList();
+    public List<RestViolation> getRestViolations() {
+        return legRepository.getAllLegs()
+                .stream()
+                .map(this::isRestViolation)
+                .filter(Objects::nonNull)
+                .toList();
     }
-    private boolean isRestViolation(Leg leg){
+    private RestViolation isRestViolation(Leg leg){
         if(leg.getEndTime()==null){
-            return false;
+            return null;
         }
-        return 8<(leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS));
+        double drivingTime = leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS);
+        if(8>drivingTime){
+            return null;
+        }
+        return new RestViolation(leg.getDriver().getName(),
+                drivingTime, leg.getStartTime());
+
     }
-    private boolean isSpeedViolation(Leg leg){
+    private SpeedViolation isSpeedViolation(Leg leg){
         if(leg.getEndTime()==null){
-            return false;
+            return null;
         }
-        return 90<(leg.getDistanceDriven()/
-                (leg.getStartTime().until(leg.getEndTime(), ChronoUnit.HOURS)));
+        double speed =leg.getDistanceDriven()/
+                (leg.getStartTime().until(leg.getEndTime(), ChronoUnit.MINUTES)/60D);
+        if(90>speed){
+            return null;
+        }
+        return new SpeedViolation(leg.getDriver().getName(),
+                speed, leg.getStartTime());
+
     }
 
     public int[] getUnassignedAssignedVehicles() {

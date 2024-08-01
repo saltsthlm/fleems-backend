@@ -2,6 +2,8 @@ package com.lans.fleems.statistic;
 
 import com.lans.fleems.assignment.model.AssignmentResponseDto;
 import com.lans.fleems.leg.model.LegResponseDto;
+import com.lans.fleems.statistic.models.RestViolation;
+import com.lans.fleems.statistic.models.SpeedViolation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,17 +21,13 @@ import java.util.List;
 public class StatisticController {
     private final StatisticService statisticService;
 
-    @GetMapping("/violations/speed")
-    public ResponseEntity<List<LegResponseDto>> getSpeedViolations() {
-        return ResponseEntity.ok(statisticService.getSpeedViolations()
-                .stream()
-                .map(LegResponseDto::fromLeg).toList());
+    @GetMapping("/speed")
+    public ResponseEntity<List<SpeedViolation>> getSpeedViolations() {
+        return ResponseEntity.ok(statisticService.getSpeedViolations());
     }
-    @GetMapping("/violations/rest")
-    public ResponseEntity<List<LegResponseDto>> getRestViolations() {
-        return ResponseEntity.ok(statisticService.getRestViolations()
-                .stream()
-                .map(LegResponseDto::fromLeg).toList());
+    @GetMapping("/rest")
+    public ResponseEntity<List<RestViolation>> getRestViolations() {
+        return ResponseEntity.ok(statisticService.getRestViolations());
     }
 
     @GetMapping("/vehicles")
