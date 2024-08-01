@@ -1,5 +1,8 @@
 package com.lans.fleems.vehicle.controller;
 
+import com.lans.fleems.driver.model.DriverResponseDto;
+import com.lans.fleems.task.model.Task;
+import com.lans.fleems.task.model.TaskDto;
 import com.lans.fleems.vehicle.service.VehicleService;
 import com.lans.fleems.vehicle.model.CreateVehicleDto;
 import com.lans.fleems.vehicle.model.Vehicle;
@@ -55,6 +58,13 @@ public class VehicleController {
         VehicleResponseDto vehicleResponseDto = VehicleResponseDto.fromVehicle(vehicle);
         return ResponseEntity.created(URI.create(API_CONTEXT_ROOT + vehicle.getId())).body(vehicleResponseDto);
     }
-
+    @GetMapping("/compatible")
+    public ResponseEntity<List<VehicleResponseDto>> getCompatibleVehicle(@RequestBody TaskDto taskDto) {
+        List<VehicleResponseDto> vehicles = vehicleService.getAssignableVehicles(new Task(taskDto))
+                .stream()
+                .map(VehicleResponseDto::fromVehicle)
+                .toList();
+        return ResponseEntity.ok(vehicles);
+    }
 
 }
