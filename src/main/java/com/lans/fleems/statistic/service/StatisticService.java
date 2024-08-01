@@ -107,7 +107,7 @@ public class StatisticService {
                 .toList();
         tasks
                 .forEach(e->
-                        monthlyAssignments[(int) e.getDateFinished().until(LocalDateTime.now(),ChronoUnit.YEARS)] ++
+                        monthlyAssignments[(int) e.getDateFinished().until(LocalDateTime.now(),ChronoUnit.MONTHS)] ++
                         );
         return monthlyAssignments;
     }

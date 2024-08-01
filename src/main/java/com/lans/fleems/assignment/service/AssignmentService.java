@@ -23,6 +23,7 @@ public class AssignmentService {
     private final DriverRepository driverRepository;
     private final TaskRepository taskRepository;
 
+
     public List<Assignment> getAllAssignments() {
         return assignmentRepository.getAllAssignments();
     }
