@@ -10,7 +10,6 @@ import java.util.UUID;
 public record CreateLegDto(
         UUID driverId,
         UUID vehicleId,
-        LocalDateTime startTime,
         String startLocation,
         UUID taskId
 ) {

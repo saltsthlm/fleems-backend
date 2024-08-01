@@ -37,7 +37,7 @@ public class Leg {
 
     @CreatedDate
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private LocalDateTime startTime = LocalDateTime.now();
 
     @Column
     private LocalDateTime endTime;
@@ -67,7 +67,6 @@ public class Leg {
     public Leg(CreateLegDto createLegDto, Task task, Driver driver, Vehicle vehicle) {
         this.driver = driver;
         this.vehicle = vehicle;
-        startTime = createLegDto.startTime();
         startLocation = createLegDto.startLocation();
         this.task = task;
         this.startAddress = CoordinateService.coordinateStringToJsonString(startLocation);

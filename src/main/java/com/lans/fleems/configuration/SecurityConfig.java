@@ -4,11 +4,16 @@ package com.lans.fleems.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
-//@Configuration
-//@EnableWebSecurity
+import static org.springframework.security.config.Customizer.withDefaults;
+
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
-/*
+
     @Bean
     SecurityFilterChain defaultChain(HttpSecurity http)throws Exception{
         return http
@@ -21,16 +26,9 @@ public class SecurityConfig {
                 .build();
     }
 
-    	<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-		</dependency>
 
-   security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://accounts.google.com
- */
+
+
+
 
 }
